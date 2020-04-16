@@ -37,7 +37,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.importCsvBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -96,7 +96,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.importCsvBtn);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.button4);
@@ -106,14 +106,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(585, 83);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // button1
+            // importCsvBtn
             // 
-            this.button1.Location = new System.Drawing.Point(507, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.importCsvBtn.Location = new System.Drawing.Point(507, 3);
+            this.importCsvBtn.Name = "importCsvBtn";
+            this.importCsvBtn.Size = new System.Drawing.Size(75, 23);
+            this.importCsvBtn.TabIndex = 0;
+            this.importCsvBtn.Text = "Import CSV";
+            this.importCsvBtn.UseVisualStyleBackColor = true;
+            this.importCsvBtn.Click += new System.EventHandler(this.importCsvBtn_Click);
             // 
             // button2
             // 
@@ -164,7 +165,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button importCsvBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
