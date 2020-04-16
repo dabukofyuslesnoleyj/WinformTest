@@ -11,6 +11,7 @@ using System.IO;
 using CsvHelper;
 using Json.Net;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace WindowsFormsAppIO
 {
@@ -23,22 +24,7 @@ namespace WindowsFormsAppIO
 
         private DataTable dataGridViewToDataTable(DataGridView dgv)
         {
-            var dt = new DataTable();
-            foreach (DataGridViewColumn col in dgv.Columns)
-            {
-                dt.Columns.Add(col.Name);
-            }
-
-
-            foreach (DataGridViewRow row in dgv.Rows)
-            {
-                DataRow dRow = dt.NewRow();
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    dRow[cell.ColumnIndex] = cell.Value;
-                }
-                dt.Rows.Add(dRow);
-            }
+            var dt = dgv.DataSource as DataTable;
 
             return dt;
         }
@@ -71,8 +57,8 @@ namespace WindowsFormsAppIO
             if(saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 var dt = dataGridViewToDataTable(dataGridView1);
-                string jsonData = JsonNet.Serialize(dt);
-
+                   string jsonData = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                
                 File.WriteAllText(saveFileDialog1.FileName+".json", jsonData);
 
             }
