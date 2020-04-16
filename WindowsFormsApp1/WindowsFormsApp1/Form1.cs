@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
 
         private void showPicBtn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void closePicBtn_Click(object sender, EventArgs e)
