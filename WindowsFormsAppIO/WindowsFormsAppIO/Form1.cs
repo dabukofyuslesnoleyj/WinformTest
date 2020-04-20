@@ -115,7 +115,7 @@ namespace WindowsFormsAppIO
 
                 string data = textwriter.ToString();
                 textwriter.Flush();
-                File.WriteAllText(saveFileDialog1 + ".csv", data);
+                File.WriteAllText(saveFileDialog1.FileName + ".csv", data);
             }
             
 
@@ -133,6 +133,21 @@ namespace WindowsFormsAppIO
             }
             fillProgressChart(dt);
             dataGridView1.DataSource = dt;
+        }
+
+        private void importJSONBtn_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string read_data = File.ReadAllText(openFileDialog1.FileName);
+                DataTable dt = JsonConvert.DeserializeObject<DataTable>(read_data);
+
+                mainDT = dt.Copy();
+
+                dataGridView1.DataSource = dt;
+
+                fillProgressChart(dt);
+            }
         }
     }
 }
