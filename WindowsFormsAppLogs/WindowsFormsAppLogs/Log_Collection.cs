@@ -2,6 +2,7 @@ using System;
 using Json.Net;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace WindowsFormsAppLogs
@@ -40,14 +41,18 @@ namespace WindowsFormsAppLogs
             messageSourceCount = new Dictionary<string, int>();
             foreach (LogMessage lm in log_list)
             {
-                if (messageSourceCount.ContainsKey(lm.messageSource))
+                if(lm.messageSource != null)
                 {
-                    messageSourceCount[lm.messageSource]++;
+                    if (messageSourceCount.ContainsKey(lm.messageSource))
+                    {
+                        messageSourceCount[lm.messageSource]++;
+                    }
+                    else
+                    {
+                        messageSourceCount.Add(lm.messageSource, 1);
+                    }
                 }
-                else
-                {
-                    messageSourceCount.Add(lm.messageSource,1);
-                }
+                
 
                 if(lm.messageType == LogMessage.MessageType.Warning)
                 {
@@ -63,6 +68,24 @@ namespace WindowsFormsAppLogs
         public List<LogMessage> getLogs()
         {
             return log_list;
+        }
+
+        public int[] getTypeCount()
+        {
+            int info_count = log_list.Count - warningCount - errorCount;
+            int[] temp = { info_count, warningCount, errorCount };
+            return temp;
+        }
+
+        public List<string> getSources()
+        {
+            return 
+               (from keys in messageSourceCount.Keys select keys).ToList();
+        }
+
+        public int getSourceCount(string key)
+        {
+            return messageSourceCount[key];
         }
 
     }

@@ -51,16 +51,40 @@ namespace WindowsFormsAppLogs
                 }
                 logs = new Log_Collection(log_list);
                 drawDataGrid(log_list);
+                displayInfo(logs);
             }
+        }
+
+        private void displayInfo(Log_Collection logs)
+        {
+            int[] temp = logs.getTypeCount();
+            typeCountBox.AppendText("INFO: " + temp[0]);
+            typeCountBox.AppendText(Environment.NewLine);
+            typeCountBox.AppendText("WARNING: " + temp[1]);
+            typeCountBox.AppendText(Environment.NewLine);
+            typeCountBox.AppendText("ERROR: " + temp[2]);
+
+            foreach(string source in logs.getSources())
+            {
+                SourceCountBox.AppendText(source+" : "+logs.getSourceCount(source));
+                SourceCountBox.AppendText(Environment.NewLine);
+            }
+            
         }
 
         private void drawDataGrid(List<LogMessage> log_list)
         {
             foreach (LogMessage log in log_list)
             {
-                string[] temp = { log.typeAsString(), log.messageSource, log.messageTimestamp.ToString(), string.Join("", log.messageBody)};
-                logDataGridView.Rows.Add(temp);
+                if (log.messageSource != null)
+                {
+                    string[] s = { log.typeAsString(), log.messageSource, log.messageTimestamp.ToString(), string.Join("", log.messageBody) };
+                    logDataGridView.Rows.Add(s);
+                }
+                
             }
+            
         }
+
     }
 }
