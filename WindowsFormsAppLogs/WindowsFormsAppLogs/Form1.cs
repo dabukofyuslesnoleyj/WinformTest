@@ -25,6 +25,7 @@ namespace WindowsFormsAppLogs
             logDataGridView.Columns[1].Name = "Category";
             logDataGridView.Columns[2].Name = "Timestamp";
             logDataGridView.Columns[3].Name = "Message";
+            logDataGridView.Columns[3].Width = 400;
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -115,6 +116,38 @@ namespace WindowsFormsAppLogs
         private void dateTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void warningChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDisplayDatarid();
+        }
+
+        private void filterDisplayDatarid()
+        {
+            List<LogMessage> log_list = new List<LogMessage>();
+            if (infoChkBox.Checked)
+            {
+                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(), 
+                    LogMessage.MessageType.Info));
+            }
+            if (warningChkBox.Checked)
+            {
+                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(),
+                    LogMessage.MessageType.Warning));
+            }
+            if (errorChkBox.Checked)
+            {
+                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(),
+                    LogMessage.MessageType.Error));
+            }
+
+            drawDataGrid(log_list);
+        }
+
+        private void infoChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDisplayDatarid();
         }
     }
 }
