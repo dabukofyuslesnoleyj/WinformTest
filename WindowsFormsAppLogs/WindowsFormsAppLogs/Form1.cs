@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -42,9 +43,14 @@ namespace WindowsFormsAppLogs
 
                 foreach (string log_message in log_messages)
                 {
-                    string[] log_params = log_message.Split(',');
+                    Regex regex = new Regex("^(INFO|WARNING|ERROR),(.*?),(.*?),");
+                    Match match = regex.Match(log_message);
+                    string log_header = match.Groups[0].Value;
+                    List<string> log_header_split = log_header.Split(',').ToList();
 
-                    LogMessage lm = new LogMessage(log_params);
+                    string log_body = log_message.Remove(0, log_header.Length);
+
+                    LogMessage lm = new LogMessage(log_header_split, log_body);
 
                     log_list.Add(lm);
 
@@ -69,7 +75,26 @@ namespace WindowsFormsAppLogs
                 SourceCountBox.AppendText(source+" : "+logs.getSourceCount(source));
                 SourceCountBox.AppendText(Environment.NewLine);
             }
-            
+
+            if(logs.getStartDate() == logs.getEndDate())
+            {
+                dateTextBox.AppendText("Date: " + logs.getStartDate());
+                dateTextBox.AppendText(Environment.NewLine);
+            }
+            else
+            {
+                dateTextBox.AppendText("From Date: " + logs.getStartDate());
+                dateTextBox.AppendText(Environment.NewLine);
+                dateTextBox.AppendText("To Date: " + logs.getEndDate());
+                dateTextBox.AppendText(Environment.NewLine);
+            }
+            dateTextBox.AppendText("Starting Time: "+logs.getStartTime());
+            dateTextBox.AppendText(Environment.NewLine);
+            dateTextBox.AppendText("Ending Time: " + logs.getEndTime());
+            dateTextBox.AppendText(Environment.NewLine);
+            dateTextBox.AppendText("Duration: " + logs.getLogDuration());
+            dateTextBox.AppendText(Environment.NewLine);
+
         }
 
         private void drawDataGrid(List<LogMessage> log_list)
@@ -78,7 +103,8 @@ namespace WindowsFormsAppLogs
             {
                 if (log.messageSource != null)
                 {
-                    string[] s = { log.typeAsString(), log.messageSource, log.messageTimestamp.ToString(), string.Join("", log.messageBody) };
+                    string[] s = { log.typeAsString(), log.messageSource, 
+                        log.messageTimestamp.ToString(), log.messageBody };
                     logDataGridView.Rows.Add(s);
                 }
                 
@@ -86,5 +112,9 @@ namespace WindowsFormsAppLogs
             
         }
 
+        private void dateTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

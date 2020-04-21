@@ -35,7 +35,7 @@ namespace WindowsFormsAppLogs
             log_list = logMessages;
 
             startTime = log_list[0].messageTimestamp;
-            endTime = log_list[log_list.Count - 1].messageTimestamp;
+            endTime = log_list[log_list.Count - 2].messageTimestamp;
             logDuration = endTime.Subtract(startTime);
 
             messageSourceCount = new Dictionary<string, int>();
@@ -86,6 +86,30 @@ namespace WindowsFormsAppLogs
         public int getSourceCount(string key)
         {
             return messageSourceCount[key];
+        }
+
+        public string getStartDate()
+        {
+            return startTime.ToString("dd/MM/yyyy");
+        }
+        public string getStartTime()
+        {
+            return startTime.ToString("HH:mm");
+        }
+
+        public string getEndDate()
+        {
+            return endTime.ToString("dd/MM/yyyy");
+        }
+
+        public string getEndTime()
+        {
+            return endTime.ToString("HH:mm");
+        }
+
+        public string getLogDuration()
+        {
+            return logDuration.ToString();
         }
 
     }

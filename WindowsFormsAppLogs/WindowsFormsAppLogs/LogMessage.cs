@@ -2,7 +2,7 @@ using System;
 using Json.Net;
 using Newtonsoft.Json;
 using System.Data;
-
+using System.Collections.Generic;
 
 namespace WindowsFormsAppLogs
 {
@@ -20,16 +20,16 @@ namespace WindowsFormsAppLogs
         public string messageSource {get; set;}
         public DateTime messageTimestamp {get; set;}
         
-        public string[] messageBody;
+        public string messageBody;
         public bool hasJson;
         public DataTable bodyJson;
 
         private string completeMessage {get; set;}
 
-        public LogMessage(string[] log_params)
+        public LogMessage(List<string> log_params, string log_body)
         {
             completeMessage = string.Join("", log_params);
-            if(log_params.Length > 1)
+            if(log_params.Count > 1)
             {
                 switch (log_params[0])
                 {
@@ -39,9 +39,7 @@ namespace WindowsFormsAppLogs
                 }
                 messageSource = log_params[1];
                 messageTimestamp = DateTime.Parse(log_params[2]);
-
-                int sub_length = (log_params.Length - 3);
-                messageBody = Log_Analyzer.SubArray(log_params, 3, sub_length);
+                messageBody = log_body;
                 hasJson = false;
                 parseBody();
             }

@@ -38,7 +38,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.typeCountBox = new System.Windows.Forms.TextBox();
             this.SourceCountBox = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -131,7 +131,7 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.typeCountBox);
             this.flowLayoutPanel2.Controls.Add(this.SourceCountBox);
-            this.flowLayoutPanel2.Controls.Add(this.textBox3);
+            this.flowLayoutPanel2.Controls.Add(this.dateTextBox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(509, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -145,23 +145,25 @@
             this.typeCountBox.Location = new System.Drawing.Point(3, 3);
             this.typeCountBox.Multiline = true;
             this.typeCountBox.Name = "typeCountBox";
-            this.typeCountBox.Size = new System.Drawing.Size(134, 68);
+            this.typeCountBox.Size = new System.Drawing.Size(156, 68);
             this.typeCountBox.TabIndex = 0;
             // 
             // SourceCountBox
             // 
-            this.SourceCountBox.Location = new System.Drawing.Point(143, 3);
+            this.SourceCountBox.Location = new System.Drawing.Point(165, 3);
             this.SourceCountBox.Multiline = true;
             this.SourceCountBox.Name = "SourceCountBox";
-            this.SourceCountBox.Size = new System.Drawing.Size(191, 68);
+            this.SourceCountBox.Size = new System.Drawing.Size(199, 68);
             this.SourceCountBox.TabIndex = 1;
             // 
-            // textBox3
+            // dateTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(340, 3);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.dateTextBox.Location = new System.Drawing.Point(370, 3);
+            this.dateTextBox.Multiline = true;
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.Size = new System.Drawing.Size(176, 68);
+            this.dateTextBox.TabIndex = 2;
+            this.dateTextBox.TextChanged += new System.EventHandler(this.dateTextBox_TextChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -210,7 +212,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox typeCountBox;
         private System.Windows.Forms.TextBox SourceCountBox;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox dateTextBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
