@@ -66,6 +66,16 @@ namespace WindowsFormsAppLogs
         {
             return completeMessage;
         }
+        public string typeAsString()
+        {
+            switch (messageType)
+            {
+                case MessageType.Info: return "INFO";
+                case MessageType.Warning: return "WARNING";
+                case MessageType.Error: return "ERROR";
+                default: return "NONE";
+            }       
+        }
 
     }
 }

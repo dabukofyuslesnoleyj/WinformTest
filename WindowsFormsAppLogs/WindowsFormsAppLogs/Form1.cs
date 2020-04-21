@@ -18,6 +18,12 @@ namespace WindowsFormsAppLogs
         public Form1()
         {
             InitializeComponent();
+            logDataGridView.ColumnCount = 4;
+
+            logDataGridView.Columns[0].Name = "Tag";
+            logDataGridView.Columns[1].Name = "Category";
+            logDataGridView.Columns[2].Name = "Timestamp";
+            logDataGridView.Columns[3].Name = "Message";
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -29,13 +35,8 @@ namespace WindowsFormsAppLogs
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                logDataGridView.ColumnCount = 4;
 
-                logDataGridView.Columns[0].Name = "Tag";
-                logDataGridView.Columns[1].Name = "Category";
-                logDataGridView.Columns[2].Name = "Timestamp";
-                logDataGridView.Columns[3].Name = "Message";
-
+                List<LogMessage> log_list = new List<LogMessage>();
                 string input_log = File.ReadAllText(openFileDialog1.FileName);
                 string[] log_messages = input_log.Split('\n');
 
@@ -44,10 +45,21 @@ namespace WindowsFormsAppLogs
                     string[] log_params = log_message.Split(',');
 
                     LogMessage lm = new LogMessage(log_params);
-                    string[] temp = { log_params[0], log_params[1], log_params[2], lm.messageBody.ToString() };
-                    logDataGridView.Rows.Add(temp);
+
+                    log_list.Add(lm);
 
                 }
+                logs = new Log_Collection(log_list);
+                drawDataGrid(log_list);
+            }
+        }
+
+        private void drawDataGrid(List<LogMessage> log_list)
+        {
+            foreach (LogMessage log in log_list)
+            {
+                string[] temp = { log.typeAsString(), log.messageSource, log.messageTimestamp.ToString(), string.Join("", log.messageBody)};
+                logDataGridView.Rows.Add(temp);
             }
         }
     }

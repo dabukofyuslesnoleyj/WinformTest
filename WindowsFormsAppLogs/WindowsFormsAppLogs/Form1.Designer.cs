@@ -51,9 +51,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.logDataGridView, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 2, 0);
@@ -75,18 +75,18 @@
             this.flowLayoutPanel1.Controls.Add(this.importLogBtn);
             this.flowLayoutPanel1.Controls.Add(this.closeBtn);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(847, 507);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(509, 507);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(418, 84);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(756, 84);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // logDataGridView
             // 
             this.logDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.logDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logDataGridView.Location = new System.Drawing.Point(847, 92);
+            this.logDataGridView.Location = new System.Drawing.Point(509, 92);
             this.logDataGridView.Name = "logDataGridView";
-            this.logDataGridView.Size = new System.Drawing.Size(418, 409);
+            this.logDataGridView.Size = new System.Drawing.Size(756, 409);
             this.logDataGridView.TabIndex = 1;
             // 
             // openFileDialog1
@@ -99,9 +99,9 @@
             this.flowLayoutPanel2.Controls.Add(this.textBox2);
             this.flowLayoutPanel2.Controls.Add(this.textBox3);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(847, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(509, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(418, 83);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(756, 83);
             this.flowLayoutPanel2.TabIndex = 2;
             // 
             // textBox1
@@ -169,12 +169,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(425, 92);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(256, 92);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(416, 409);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(247, 409);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // Form1
