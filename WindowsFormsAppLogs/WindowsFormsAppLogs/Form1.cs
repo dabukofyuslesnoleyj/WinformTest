@@ -12,6 +12,8 @@ namespace WindowsFormsAppLogs
 {
     public partial class Form1 : Form
     {
+        private Log_Collection logs;
+
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +21,15 @@ namespace WindowsFormsAppLogs
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void importLogBtn_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

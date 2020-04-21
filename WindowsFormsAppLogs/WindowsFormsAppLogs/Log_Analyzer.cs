@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Linq;
 
 
-namespace testCsharp
+namespace WindowsFormsAppLogs
 {
     public static class Log_Analyzer
     {
@@ -23,7 +23,7 @@ namespace testCsharp
         Message correlation 
         */
 
-        public static List<LogMessage> getListWIthMessageType(List<LogMessage> log_list, MessageType mtype)
+        public static List<LogMessage> getListWIthMessageType(List<LogMessage> log_list, LogMessage.MessageType mtype)
         {
             // List<LogMessage> temp = new List<LogMessage>();
 
@@ -85,6 +85,13 @@ namespace testCsharp
             //     }
             // }
             return query;
+        }
+
+        public static T[] SubArray<T>(this T[] data, int index, int length)
+        {
+            T[] result = new T[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
         }
 
         public static void saveLogsAsCSV(List<LogMessage> log_list, string filename)

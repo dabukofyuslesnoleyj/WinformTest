@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using System.Data;
 
 
-namespace testCsharp
+namespace WindowsFormsAppLogs
 {
     public class LogMessage 
     {
@@ -39,7 +39,7 @@ namespace testCsharp
             messageTimestamp = DateTime.Parse(log_params[2]);
 
             int sub_length = (log_params.Length - 3);
-            messageBody = Utility_Funcs.SubArray(log_params, 3, sub_length);
+            messageBody = Log_Analyzer.SubArray(log_params, 3, sub_length);
             hasJson = false;
             parseBody();
         }
@@ -55,7 +55,7 @@ namespace testCsharp
                     temp = string.Join("," ,temp , val);
                 }
                 // temp.Remove(temp.Length-1,1);
-                messageBody = temp.Split("#json");
+                messageBody = temp.Split('#');
                 string data = "["+messageBody[1]+",]";
                 bodyJson = JsonConvert.DeserializeObject<DataTable>(data);
             }

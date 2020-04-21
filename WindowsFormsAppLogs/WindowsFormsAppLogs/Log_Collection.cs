@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace testCsharp
+namespace WindowsFormsAppLogs
 {
     public class Log_Collection
     {
@@ -49,11 +49,11 @@ namespace testCsharp
                     messageSourceCount.Add(lm.messageSource,1);
                 }
 
-                if(lm.messageType == MessageType.Warning)
+                if(lm.messageType == LogMessage.MessageType.Warning)
                 {
                     warningCount++;
                 }
-                else if(lm.messageType == MessageType.Error)
+                else if(lm.messageType == LogMessage.MessageType.Error)
                 {
                     errorCount++;
                 }
