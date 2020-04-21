@@ -46,19 +46,20 @@ namespace WindowsFormsAppLogs
 
         private void parseBody()
         {
-            if(messageBody[0].Contains("#json"))
-            {
-                hasJson = true;
-                string temp = "";
-                foreach (string val in messageBody)
-                {
-                    temp = string.Join("," ,temp , val);
-                }
-                // temp.Remove(temp.Length-1,1);
-                messageBody = temp.Split('#');
-                string data = "["+messageBody[1]+",]";
-                bodyJson = JsonConvert.DeserializeObject<DataTable>(data);
-            }
+            //if (messageBody[0].Contains("#json"))
+            //{
+            //    hasJson = true;
+            //    string temp = "";
+            //    foreach (string val in messageBody)
+            //    {
+            //        temp = string.Join(",", temp, val);
+            //    }
+            //    temp.Remove(temp.Length - 1, 1);
+            //    messageBody = temp.Split('#');
+            //    string data = "[" + messageBody[1] + ",]";
+            //    bodyJson = JsonConvert.DeserializeObject<DataTable>(data);
+            //}
+
         }
 
         public override string ToString()

@@ -30,7 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.logDataGridView = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,7 +44,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.logDataGridView, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,14 +80,14 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(418, 84);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // logDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(847, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(418, 409);
-            this.dataGridView1.TabIndex = 1;
+            this.logDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.logDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logDataGridView.Location = new System.Drawing.Point(847, 92);
+            this.logDataGridView.Name = "logDataGridView";
+            this.logDataGridView.Size = new System.Drawing.Size(418, 409);
+            this.logDataGridView.TabIndex = 1;
             // 
             // openFileDialog1
             // 
@@ -187,7 +187,7 @@
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -202,7 +202,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button importLogBtn;
         private System.Windows.Forms.Button closeBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView logDataGridView;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
