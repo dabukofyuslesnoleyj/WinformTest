@@ -121,7 +121,7 @@ namespace WindowsFormsAppLogs
                 Dictionary<string, string> body = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
                 foreach (string key in body.Keys)
                 {
-                    parsedBody.Add(key+" -> "+body[key]);
+                    parsedBody.Add(key+" : "+body[key]);
                 }
                 return parsedBody;
 

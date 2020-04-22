@@ -120,6 +120,7 @@ namespace WindowsFormsAppLogs
         private void filterDisplayDatarid()
         {
             List<LogMessage> log_list = new List<LogMessage>();
+            
             if (infoChkBox.Checked)
             {
                 log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(), 

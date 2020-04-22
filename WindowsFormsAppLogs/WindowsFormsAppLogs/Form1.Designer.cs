@@ -45,25 +45,25 @@
             this.errorChkBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.sourceCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button4 = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.typeTextBox = new System.Windows.Forms.TextBox();
             this.sourceTextBox = new System.Windows.Forms.TextBox();
             this.timeStampTextBox = new System.Windows.Forms.TextBox();
             this.bodyTextBox = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -272,6 +272,16 @@
             this.sourceCheckedListBox.Size = new System.Drawing.Size(241, 184);
             this.sourceCheckedListBox.TabIndex = 6;
             // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.flowLayoutPanel4.Controls.Add(this.button3);
+            this.flowLayoutPanel4.Controls.Add(this.button4);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 207);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(200, 199);
+            this.flowLayoutPanel4.TabIndex = 7;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(3, 3);
@@ -282,9 +292,15 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // openFileDialog1
+            // button4
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.button4.Location = new System.Drawing.Point(3, 32);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(190, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Show Row Details";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -299,67 +315,56 @@
             this.flowLayoutPanel3.Size = new System.Drawing.Size(247, 409);
             this.flowLayoutPanel3.TabIndex = 8;
             // 
+            // textBox5
+            // 
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(3, 3);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(229, 31);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.Text = "Selected Row";
+            // 
             // typeTextBox
             // 
-            this.typeTextBox.Location = new System.Drawing.Point(3, 29);
+            this.typeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.typeTextBox.Location = new System.Drawing.Point(3, 40);
             this.typeTextBox.Name = "typeTextBox";
             this.typeTextBox.ReadOnly = true;
-            this.typeTextBox.Size = new System.Drawing.Size(79, 20);
+            this.typeTextBox.Size = new System.Drawing.Size(79, 26);
             this.typeTextBox.TabIndex = 0;
             // 
             // sourceTextBox
             // 
-            this.sourceTextBox.Location = new System.Drawing.Point(88, 29);
+            this.sourceTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sourceTextBox.Location = new System.Drawing.Point(88, 40);
             this.sourceTextBox.Name = "sourceTextBox";
             this.sourceTextBox.ReadOnly = true;
-            this.sourceTextBox.Size = new System.Drawing.Size(144, 20);
+            this.sourceTextBox.Size = new System.Drawing.Size(144, 26);
             this.sourceTextBox.TabIndex = 1;
             // 
             // timeStampTextBox
             // 
-            this.timeStampTextBox.Location = new System.Drawing.Point(3, 55);
+            this.timeStampTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeStampTextBox.Location = new System.Drawing.Point(3, 72);
             this.timeStampTextBox.Name = "timeStampTextBox";
             this.timeStampTextBox.ReadOnly = true;
-            this.timeStampTextBox.Size = new System.Drawing.Size(229, 20);
+            this.timeStampTextBox.Size = new System.Drawing.Size(229, 26);
             this.timeStampTextBox.TabIndex = 2;
             // 
             // bodyTextBox
             // 
-            this.bodyTextBox.Location = new System.Drawing.Point(3, 81);
+            this.bodyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bodyTextBox.Location = new System.Drawing.Point(3, 104);
             this.bodyTextBox.Multiline = true;
             this.bodyTextBox.Name = "bodyTextBox";
             this.bodyTextBox.ReadOnly = true;
-            this.bodyTextBox.Size = new System.Drawing.Size(229, 307);
+            this.bodyTextBox.Size = new System.Drawing.Size(229, 302);
             this.bodyTextBox.TabIndex = 3;
             // 
-            // textBox5
+            // openFileDialog1
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Location = new System.Drawing.Point(3, 3);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(229, 20);
-            this.textBox5.TabIndex = 4;
-            this.textBox5.Text = "Selected Row";
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.flowLayoutPanel4.Controls.Add(this.button3);
-            this.flowLayoutPanel4.Controls.Add(this.button4);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 207);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(200, 199);
-            this.flowLayoutPanel4.TabIndex = 7;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(3, 32);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Show Row Details";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -377,9 +382,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
