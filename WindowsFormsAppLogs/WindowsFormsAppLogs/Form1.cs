@@ -59,6 +59,7 @@ namespace WindowsFormsAppLogs
                 logs = new Log_Collection(log_list);
                 drawDataGrid(log_list);
                 displayInfo(logs);
+                initializeCheckedLIstBox();
             }
         }
 
@@ -120,7 +121,6 @@ namespace WindowsFormsAppLogs
 
         private void warningChkBox_CheckedChanged(object sender, EventArgs e)
         {
-            filterDisplayDatarid();
         }
 
         private void filterDisplayDatarid()
@@ -141,11 +141,43 @@ namespace WindowsFormsAppLogs
                 log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(),
                     LogMessage.MessageType.Error));
             }
-
+            log_list = filterSources(log_list);
+            this.logDataGridView.Rows.Clear();
             drawDataGrid(log_list);
         }
 
         private void infoChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void errorChkBox_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private List<LogMessage> filterSources(List<LogMessage> input_log_list)
+        {
+            List<LogMessage> log_list = new List<LogMessage>();
+            for (int i = 0; i < sourceCheckedListBox.CheckedItems.Count; i++)
+            {
+                if (sourceCheckedListBox.GetItemChecked(i))
+                {
+                    log_list.AddRange(Log_Analyzer.getListWIthMessageSource(input_log_list,
+                    sourceCheckedListBox.Items[i].ToString()));
+                }       
+            }
+            return log_list;
+        }
+
+        private void initializeCheckedLIstBox()
+        {
+            foreach (string key in logs.getSources())
+            {
+                sourceCheckedListBox.Items.Add(key, CheckState.Checked);
+            }
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
             filterDisplayDatarid();
         }
