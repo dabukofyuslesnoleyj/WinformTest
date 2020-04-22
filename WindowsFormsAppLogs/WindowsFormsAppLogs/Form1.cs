@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -189,6 +191,38 @@ namespace WindowsFormsAppLogs
                     bodyTextBox.AppendText(s);
                     bodyTextBox.AppendText(Environment.NewLine);
                 }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                DataTable dt = logDataGridView.DataSource as DataTable;
+
+                var textwriter = new StringWriter();
+                var csv = new CsvWriter(textwriter, CultureInfo.InvariantCulture);
+
+                foreach (DataColumn dc in dt.Columns)
+                {
+                    csv.WriteField(dc.ColumnName);
+                }
+                csv.NextRecord();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        csv.WriteField(dr[i]);
+                    }
+                    csv.NextRecord();
+                }
+
+                string data = textwriter.ToString();
+                textwriter.Flush();
+                File.WriteAllText(saveFileDialog1.FileName + ".csv", data);
             }
         }
     }
