@@ -39,21 +39,31 @@
             this.typeCountBox = new System.Windows.Forms.TextBox();
             this.SourceCountBox = new System.Windows.Forms.TextBox();
             this.dateTextBox = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.infoChkBox = new System.Windows.Forms.CheckBox();
             this.warningChkBox = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.errorChkBox = new System.Windows.Forms.CheckBox();
-            this.sourceCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.sourceCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.typeTextBox = new System.Windows.Forms.TextBox();
+            this.sourceTextBox = new System.Windows.Forms.TextBox();
+            this.timeStampTextBox = new System.Windows.Forms.TextBox();
+            this.bodyTextBox = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,6 +77,7 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -138,6 +149,7 @@
             this.logDataGridView.Name = "logDataGridView";
             this.logDataGridView.Size = new System.Drawing.Size(756, 409);
             this.logDataGridView.TabIndex = 1;
+            this.logDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.logDataGridView_CellContentClick);
             // 
             // flowLayoutPanel2
             // 
@@ -157,6 +169,7 @@
             this.typeCountBox.Location = new System.Drawing.Point(3, 3);
             this.typeCountBox.Multiline = true;
             this.typeCountBox.Name = "typeCountBox";
+            this.typeCountBox.ReadOnly = true;
             this.typeCountBox.Size = new System.Drawing.Size(156, 68);
             this.typeCountBox.TabIndex = 0;
             // 
@@ -165,6 +178,7 @@
             this.SourceCountBox.Location = new System.Drawing.Point(165, 3);
             this.SourceCountBox.Multiline = true;
             this.SourceCountBox.Name = "SourceCountBox";
+            this.SourceCountBox.ReadOnly = true;
             this.SourceCountBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SourceCountBox.Size = new System.Drawing.Size(199, 68);
             this.SourceCountBox.TabIndex = 1;
@@ -174,40 +188,10 @@
             this.dateTextBox.Location = new System.Drawing.Point(370, 3);
             this.dateTextBox.Multiline = true;
             this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.ReadOnly = true;
             this.dateTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dateTextBox.Size = new System.Drawing.Size(176, 68);
             this.dateTextBox.TabIndex = 2;
-            this.dateTextBox.TextChanged += new System.EventHandler(this.dateTextBox_TextChanged);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // infoChkBox
-            // 
-            this.infoChkBox.AutoSize = true;
-            this.infoChkBox.Checked = true;
-            this.infoChkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.infoChkBox.Location = new System.Drawing.Point(3, 3);
-            this.infoChkBox.Name = "infoChkBox";
-            this.infoChkBox.Size = new System.Drawing.Size(51, 17);
-            this.infoChkBox.TabIndex = 3;
-            this.infoChkBox.Text = "INFO";
-            this.infoChkBox.UseVisualStyleBackColor = true;
-            this.infoChkBox.CheckedChanged += new System.EventHandler(this.infoChkBox_CheckedChanged);
-            // 
-            // warningChkBox
-            // 
-            this.warningChkBox.AutoSize = true;
-            this.warningChkBox.Checked = true;
-            this.warningChkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.warningChkBox.Location = new System.Drawing.Point(3, 34);
-            this.warningChkBox.Name = "warningChkBox";
-            this.warningChkBox.Size = new System.Drawing.Size(79, 17);
-            this.warningChkBox.TabIndex = 4;
-            this.warningChkBox.Text = "WARNING";
-            this.warningChkBox.UseVisualStyleBackColor = true;
-            this.warningChkBox.CheckedChanged += new System.EventHandler(this.warningChkBox_CheckedChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -227,6 +211,30 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(247, 83);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
+            // infoChkBox
+            // 
+            this.infoChkBox.AutoSize = true;
+            this.infoChkBox.Checked = true;
+            this.infoChkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.infoChkBox.Location = new System.Drawing.Point(3, 3);
+            this.infoChkBox.Name = "infoChkBox";
+            this.infoChkBox.Size = new System.Drawing.Size(51, 17);
+            this.infoChkBox.TabIndex = 3;
+            this.infoChkBox.Text = "INFO";
+            this.infoChkBox.UseVisualStyleBackColor = true;
+            // 
+            // warningChkBox
+            // 
+            this.warningChkBox.AutoSize = true;
+            this.warningChkBox.Checked = true;
+            this.warningChkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.warningChkBox.Location = new System.Drawing.Point(3, 34);
+            this.warningChkBox.Name = "warningChkBox";
+            this.warningChkBox.Size = new System.Drawing.Size(79, 17);
+            this.warningChkBox.TabIndex = 4;
+            this.warningChkBox.Text = "WARNING";
+            this.warningChkBox.UseVisualStyleBackColor = true;
+            // 
             // errorChkBox
             // 
             this.errorChkBox.AutoSize = true;
@@ -238,15 +246,6 @@
             this.errorChkBox.TabIndex = 5;
             this.errorChkBox.Text = "ERROR";
             this.errorChkBox.UseVisualStyleBackColor = true;
-            this.errorChkBox.CheckedChanged += new System.EventHandler(this.errorChkBox_CheckedChanged);
-            // 
-            // sourceCheckedListBox
-            // 
-            this.sourceCheckedListBox.FormattingEnabled = true;
-            this.sourceCheckedListBox.Location = new System.Drawing.Point(3, 3);
-            this.sourceCheckedListBox.Name = "sourceCheckedListBox";
-            this.sourceCheckedListBox.Size = new System.Drawing.Size(241, 184);
-            this.sourceCheckedListBox.TabIndex = 6;
             // 
             // tableLayoutPanel3
             // 
@@ -254,7 +253,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.sourceCheckedListBox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.button3, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.flowLayoutPanel4, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(256, 92);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -264,15 +263,102 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(247, 409);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
+            // sourceCheckedListBox
+            // 
+            this.sourceCheckedListBox.FormattingEnabled = true;
+            this.sourceCheckedListBox.Location = new System.Drawing.Point(3, 3);
+            this.sourceCheckedListBox.Name = "sourceCheckedListBox";
+            this.sourceCheckedListBox.Size = new System.Drawing.Size(241, 184);
+            this.sourceCheckedListBox.TabIndex = 6;
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(3, 207);
+            this.button3.Location = new System.Drawing.Point(3, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(241, 23);
+            this.button3.Size = new System.Drawing.Size(190, 23);
             this.button3.TabIndex = 7;
             this.button3.Text = "Run Filters";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.textBox5);
+            this.flowLayoutPanel3.Controls.Add(this.typeTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.sourceTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.timeStampTextBox);
+            this.flowLayoutPanel3.Controls.Add(this.bodyTextBox);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 92);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(247, 409);
+            this.flowLayoutPanel3.TabIndex = 8;
+            // 
+            // typeTextBox
+            // 
+            this.typeTextBox.Location = new System.Drawing.Point(3, 29);
+            this.typeTextBox.Name = "typeTextBox";
+            this.typeTextBox.ReadOnly = true;
+            this.typeTextBox.Size = new System.Drawing.Size(79, 20);
+            this.typeTextBox.TabIndex = 0;
+            // 
+            // sourceTextBox
+            // 
+            this.sourceTextBox.Location = new System.Drawing.Point(88, 29);
+            this.sourceTextBox.Name = "sourceTextBox";
+            this.sourceTextBox.ReadOnly = true;
+            this.sourceTextBox.Size = new System.Drawing.Size(144, 20);
+            this.sourceTextBox.TabIndex = 1;
+            // 
+            // timeStampTextBox
+            // 
+            this.timeStampTextBox.Location = new System.Drawing.Point(3, 55);
+            this.timeStampTextBox.Name = "timeStampTextBox";
+            this.timeStampTextBox.ReadOnly = true;
+            this.timeStampTextBox.Size = new System.Drawing.Size(229, 20);
+            this.timeStampTextBox.TabIndex = 2;
+            // 
+            // bodyTextBox
+            // 
+            this.bodyTextBox.Location = new System.Drawing.Point(3, 81);
+            this.bodyTextBox.Multiline = true;
+            this.bodyTextBox.Name = "bodyTextBox";
+            this.bodyTextBox.ReadOnly = true;
+            this.bodyTextBox.Size = new System.Drawing.Size(229, 307);
+            this.bodyTextBox.TabIndex = 3;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Enabled = false;
+            this.textBox5.Location = new System.Drawing.Point(3, 3);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(229, 20);
+            this.textBox5.TabIndex = 4;
+            this.textBox5.Text = "Selected Row";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.flowLayoutPanel4.Controls.Add(this.button3);
+            this.flowLayoutPanel4.Controls.Add(this.button4);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 207);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(200, 199);
+            this.flowLayoutPanel4.TabIndex = 7;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(3, 32);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(190, 23);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Show Row Details";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -290,6 +376,9 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -316,6 +405,14 @@
         private System.Windows.Forms.CheckedListBox sourceCheckedListBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox typeTextBox;
+        private System.Windows.Forms.TextBox sourceTextBox;
+        private System.Windows.Forms.TextBox timeStampTextBox;
+        private System.Windows.Forms.TextBox bodyTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Button button4;
     }
 }
 

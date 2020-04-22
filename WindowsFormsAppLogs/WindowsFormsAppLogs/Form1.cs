@@ -114,14 +114,6 @@ namespace WindowsFormsAppLogs
             
         }
 
-        private void dateTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void warningChkBox_CheckedChanged(object sender, EventArgs e)
-        {
-        }
 
         private void filterDisplayDatarid()
         {
@@ -144,14 +136,6 @@ namespace WindowsFormsAppLogs
             log_list = filterSources(log_list);
             this.logDataGridView.Rows.Clear();
             drawDataGrid(log_list);
-        }
-
-        private void infoChkBox_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void errorChkBox_CheckedChanged(object sender, EventArgs e)
-        {
         }
 
         private List<LogMessage> filterSources(List<LogMessage> input_log_list)
@@ -180,6 +164,32 @@ namespace WindowsFormsAppLogs
         private void button3_Click(object sender, EventArgs e)
         {
             filterDisplayDatarid();
+        }
+
+        private void logDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (logDataGridView.SelectedRows.Count == 1)
+            {
+                string type = logDataGridView.SelectedRows[0].Cells[0].Value + string.Empty;
+                string source = logDataGridView.SelectedRows[0].Cells[1].Value + string.Empty;
+                string timeStamp = logDataGridView.SelectedRows[0].Cells[2].Value + string.Empty;
+                string body = logDataGridView.SelectedRows[0].Cells[3].Value + string.Empty;
+                typeTextBox.Text = type;
+                sourceTextBox.Text = source;
+                timeStampTextBox.Text = timeStamp;
+                bodyTextBox.Text = "";
+                List<string> row_values = Log_Analyzer.parseMessageBody(body);
+                foreach (string s in row_values)
+                {
+                    bodyTextBox.AppendText(s);
+                    bodyTextBox.AppendText(Environment.NewLine);
+                }
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ using CsvHelper;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 
 namespace WindowsFormsAppLogs
@@ -101,6 +103,31 @@ namespace WindowsFormsAppLogs
             {
                 csv.WriteRecords(log_list);
             }
+        }
+
+        public static List<string> parseMessageBody(string messageBody)
+        {
+            List<string> parsedBody = new List<string>();
+
+            if (messageBody.Contains("#json"))
+            {
+                Regex regex = new Regex("@(.*?)#");
+                Match match = regex.Match(messageBody);
+                parsedBody.Add("HEADER: "+match.Groups[0].Value);
+                regex = new Regex("{(.*?)}");
+                match = regex.Match(messageBody);
+                string data = match.Groups[0].Value;
+                parsedBody.Add("JSON: ");
+                Dictionary<string, string> body = JsonConvert.DeserializeObject<Dictionary<string, string>>(data);
+                foreach (string key in body.Keys)
+                {
+                    parsedBody.Add(key+" -> "+body[key]);
+                }
+                return parsedBody;
+
+            }
+            return messageBody.Split(',').ToList();
+
         }
 
     }
