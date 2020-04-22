@@ -164,17 +164,13 @@ namespace WindowsFormsAppLogs
             
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void runFilterBtn_Click(object sender, EventArgs e)
         {
             filterDisplayDatarid();
         }
 
-        private void logDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void showDetailsBtn_Click(object sender, EventArgs e)
         {
             if (logDataGridView.SelectedRows.Count == 1)
             {
@@ -187,15 +183,23 @@ namespace WindowsFormsAppLogs
                 timeStampTextBox.Text = timeStamp;
                 bodyTextBox.Text = "";
                 List<string> row_values = Log_Analyzer.parseMessageBody(body);
-                foreach (string s in row_values)
+                //bodyTextBox.Text = "" + row_values.Count;
+                if (row_values.Count <= 1)
                 {
-                    bodyTextBox.AppendText(s);
-                    bodyTextBox.AppendText(Environment.NewLine);
+                    bodyTextBox.Text = row_values[0];
                 }
+                else
+                {
+                    foreach (string s in row_values)
+                    {
+                        bodyTextBox.Text = bodyTextBox.Text + s + "\r\n";
+                    }
+                }
+                
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void saveCsvBtn_Click(object sender, EventArgs e)
         {
             
 

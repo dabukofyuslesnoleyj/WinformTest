@@ -30,8 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.saveCsvBtn = new System.Windows.Forms.Button();
             this.importLogBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.logDataGridView = new System.Windows.Forms.DataGridView();
@@ -46,8 +45,8 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.sourceCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.runFilterBtn = new System.Windows.Forms.Button();
+            this.detailsBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.typeTextBox = new System.Windows.Forms.TextBox();
@@ -93,8 +92,7 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.saveCsvBtn);
             this.flowLayoutPanel1.Controls.Add(this.importLogBtn);
             this.flowLayoutPanel1.Controls.Add(this.closeBtn);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -103,28 +101,19 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(756, 84);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // saveCsvBtn
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Save as CSV";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.saveCsvBtn.Location = new System.Drawing.Point(3, 3);
+            this.saveCsvBtn.Name = "saveCsvBtn";
+            this.saveCsvBtn.Size = new System.Drawing.Size(90, 23);
+            this.saveCsvBtn.TabIndex = 1;
+            this.saveCsvBtn.Text = "Save as CSV";
+            this.saveCsvBtn.UseVisualStyleBackColor = true;
+            this.saveCsvBtn.Click += new System.EventHandler(this.saveCsvBtn_Click);
             // 
             // importLogBtn
             // 
-            this.importLogBtn.Location = new System.Drawing.Point(180, 3);
+            this.importLogBtn.Location = new System.Drawing.Point(99, 3);
             this.importLogBtn.Name = "importLogBtn";
             this.importLogBtn.Size = new System.Drawing.Size(88, 23);
             this.importLogBtn.TabIndex = 2;
@@ -134,7 +123,7 @@
             // 
             // closeBtn
             // 
-            this.closeBtn.Location = new System.Drawing.Point(274, 3);
+            this.closeBtn.Location = new System.Drawing.Point(193, 3);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(75, 23);
             this.closeBtn.TabIndex = 3;
@@ -150,7 +139,6 @@
             this.logDataGridView.Name = "logDataGridView";
             this.logDataGridView.Size = new System.Drawing.Size(756, 409);
             this.logDataGridView.TabIndex = 1;
-            this.logDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.logDataGridView_CellContentClick);
             // 
             // flowLayoutPanel2
             // 
@@ -275,32 +263,32 @@
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.flowLayoutPanel4.Controls.Add(this.button3);
-            this.flowLayoutPanel4.Controls.Add(this.button4);
+            this.flowLayoutPanel4.Controls.Add(this.runFilterBtn);
+            this.flowLayoutPanel4.Controls.Add(this.detailsBtn);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(23, 207);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(200, 199);
             this.flowLayoutPanel4.TabIndex = 7;
             // 
-            // button3
+            // runFilterBtn
             // 
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Run Filters";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.runFilterBtn.Location = new System.Drawing.Point(3, 3);
+            this.runFilterBtn.Name = "runFilterBtn";
+            this.runFilterBtn.Size = new System.Drawing.Size(190, 23);
+            this.runFilterBtn.TabIndex = 7;
+            this.runFilterBtn.Text = "Run Filters";
+            this.runFilterBtn.UseVisualStyleBackColor = true;
+            this.runFilterBtn.Click += new System.EventHandler(this.runFilterBtn_Click);
             // 
-            // button4
+            // detailsBtn
             // 
-            this.button4.Location = new System.Drawing.Point(3, 32);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 23);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Show Row Details";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.detailsBtn.Location = new System.Drawing.Point(3, 32);
+            this.detailsBtn.Name = "detailsBtn";
+            this.detailsBtn.Size = new System.Drawing.Size(190, 23);
+            this.detailsBtn.TabIndex = 8;
+            this.detailsBtn.Text = "Show Row Details";
+            this.detailsBtn.UseVisualStyleBackColor = true;
+            this.detailsBtn.Click += new System.EventHandler(this.showDetailsBtn_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -393,8 +381,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button saveCsvBtn;
         private System.Windows.Forms.Button importLogBtn;
         private System.Windows.Forms.Button closeBtn;
         private System.Windows.Forms.DataGridView logDataGridView;
@@ -410,7 +397,7 @@
         private System.Windows.Forms.CheckBox errorChkBox;
         private System.Windows.Forms.CheckedListBox sourceCheckedListBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button runFilterBtn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox typeTextBox;
@@ -418,7 +405,7 @@
         private System.Windows.Forms.TextBox timeStampTextBox;
         private System.Windows.Forms.TextBox bodyTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button detailsBtn;
     }
 }
 
