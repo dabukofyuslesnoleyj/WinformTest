@@ -79,6 +79,12 @@ namespace WindowsFormsAppLogs
                 SourceCountBox.AppendText(Environment.NewLine);
             }
 
+            foreach (string tag in logModel.GetBodyTags())
+            {
+                tagTextBox.AppendText(tag + " : " + logModel.GetBodyTagsCount(tag));
+                tagTextBox.AppendText(Environment.NewLine);
+            }
+
             if (logModel.GetStartDate() == logModel.GetEndDate())
             {
                 dateTextBox.AppendText("Date: " + logModel.GetStartDate());

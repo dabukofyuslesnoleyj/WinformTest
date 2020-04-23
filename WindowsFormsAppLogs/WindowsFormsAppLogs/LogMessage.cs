@@ -3,6 +3,7 @@ using Json.Net;
 using Newtonsoft.Json;
 using System.Data;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace WindowsFormsAppLogs
 {
@@ -19,15 +20,15 @@ namespace WindowsFormsAppLogs
         public MessageType messageType {get; set;}
         public string messageSource {get; set;}
         public DateTime messageTimestamp {get; set;}
+        public List<string> bodyTags;
         
         public string messageBody;
-        public bool hasJson;
-        public DataTable bodyJson;
 
         private string completeMessage {get; set;}
 
         public LogMessage(List<string> log_params, string log_body)
         {
+            bodyTags = new List<string>();
             completeMessage = string.Join("", log_params);
             if (log_params.Count > 1)
             {
@@ -37,10 +38,25 @@ namespace WindowsFormsAppLogs
                     case "WARNING": messageType = MessageType.Warning; break;
                     case "ERROR": messageType = MessageType.Error; break;
                 }
+
                 messageSource = log_params[1];
                 messageTimestamp = DateTime.Parse(log_params[2]);
                 messageBody = log_body;
-                hasJson = false;
+
+                Regex regex = new Regex("@(.*?);(.*?)#");
+                Match match = regex.Match(messageBody);
+                string tag = match.Groups[0].Value;
+
+                if (tag == "")
+                {
+                    bodyTags.Add("No Tag");
+                }
+                else
+                {
+                    tag.Remove(0);
+                    tag.Remove(tag.Length - 1);
+                    bodyTags.AddRange(new List<string>(tag.Split(';')));
+                }
             }
             
         }

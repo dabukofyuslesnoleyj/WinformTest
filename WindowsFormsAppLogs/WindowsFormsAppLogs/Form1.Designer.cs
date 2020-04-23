@@ -55,6 +55,7 @@
             this.bodyTextBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tagTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logDataGridView)).BeginInit();
@@ -145,6 +146,7 @@
             this.flowLayoutPanel2.Controls.Add(this.typeCountBox);
             this.flowLayoutPanel2.Controls.Add(this.SourceCountBox);
             this.flowLayoutPanel2.Controls.Add(this.dateTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.tagTextBox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(509, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -169,12 +171,12 @@
             this.SourceCountBox.Name = "SourceCountBox";
             this.SourceCountBox.ReadOnly = true;
             this.SourceCountBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.SourceCountBox.Size = new System.Drawing.Size(199, 68);
+            this.SourceCountBox.Size = new System.Drawing.Size(174, 68);
             this.SourceCountBox.TabIndex = 1;
             // 
             // dateTextBox
             // 
-            this.dateTextBox.Location = new System.Drawing.Point(370, 3);
+            this.dateTextBox.Location = new System.Drawing.Point(345, 3);
             this.dateTextBox.Multiline = true;
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.ReadOnly = true;
@@ -354,6 +356,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // tagTextBox
+            // 
+            this.tagTextBox.Location = new System.Drawing.Point(527, 3);
+            this.tagTextBox.Multiline = true;
+            this.tagTextBox.Name = "tagTextBox";
+            this.tagTextBox.ReadOnly = true;
+            this.tagTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tagTextBox.Size = new System.Drawing.Size(159, 68);
+            this.tagTextBox.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,6 +418,7 @@
         private System.Windows.Forms.TextBox bodyTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button detailsBtn;
+        private System.Windows.Forms.TextBox tagTextBox;
     }
 }
 

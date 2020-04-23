@@ -27,6 +27,7 @@ namespace WindowsFormsAppLogs
         private int infoCount;
 
         private Dictionary <string, int> messageSourceCount;
+        private Dictionary<string, int> bodyTagCount;
 
         private DateTime startTime;
         private DateTime endTime;
@@ -45,6 +46,7 @@ namespace WindowsFormsAppLogs
             logDuration = endTime.Subtract(startTime);
 
             messageSourceCount = new Dictionary<string, int>();
+            bodyTagCount = new Dictionary<string, int>();
 
             foreach (LogMessage lm in logs)
             {
@@ -57,6 +59,18 @@ namespace WindowsFormsAppLogs
                     else
                     {
                         messageSourceCount.Add(lm.messageSource, 1);
+                    }
+
+                    foreach (string tag in lm.bodyTags)
+                    {
+                        if (bodyTagCount.ContainsKey(tag))
+                        {
+                            bodyTagCount[tag]++;
+                        }
+                        else
+                        {
+                            bodyTagCount.Add(tag, 1);
+                        }
                     }
                 }   
 
@@ -89,6 +103,17 @@ namespace WindowsFormsAppLogs
         public int GetSourceCount(string key)
         {
             return messageSourceCount[key];
+        }
+
+        public List<string> GetBodyTags()
+        {
+            return
+               (from keys in bodyTagCount.Keys select keys).ToList();
+        }
+
+        public int GetBodyTagsCount(string key)
+        {
+            return bodyTagCount[key];
         }
 
         public string GetStartDate()
