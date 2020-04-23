@@ -1,2 +1,2 @@
 # WinformTest
-Testing Windows Forms for SSI
+A log processing application for SSI logs.
