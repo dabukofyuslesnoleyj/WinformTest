@@ -71,8 +71,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="LogMessage.cs" />
-    <Compile Include="Log_Analyzer.cs" />
-    <Compile Include="Log_Collection.cs" />
+    <Compile Include="LogAnalyzer.cs" />
+    <Compile Include="LogCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

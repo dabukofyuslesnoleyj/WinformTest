@@ -16,7 +16,7 @@ namespace WindowsFormsAppLogs
 {
     public partial class Form1 : Form
     {
-        private Log_Collection logs;
+        private LogCollection logModel;
 
         public Form1()
         {
@@ -40,124 +40,120 @@ namespace WindowsFormsAppLogs
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
 
-                List<LogMessage> log_list = new List<LogMessage>();
-                string input_log = File.ReadAllText(openFileDialog1.FileName);
-                string[] log_messages = input_log.Split('\n');
-
-                foreach (string log_message in log_messages)
+                List<LogMessage> logs = new List<LogMessage>();
+                string inputLog = File.ReadAllText(openFileDialog1.FileName);
+                string[] logMessages = inputLog.Split('\n');
+                Regex regex = new Regex("^(INFO|WARNING|ERROR),(.*?),(.*?),");
+                foreach (string logMessage in logMessages)
                 {
-                    Regex regex = new Regex("^(INFO|WARNING|ERROR),(.*?),(.*?),");
-                    Match match = regex.Match(log_message);
+                    Match match = regex.Match(logMessage);
                     string log_header = match.Groups[0].Value;
                     List<string> log_header_split = log_header.Split(',').ToList();
 
-                    string log_body = log_message.Remove(0, log_header.Length);
+                    string log_body = logMessage.Remove(0, log_header.Length);
 
                     LogMessage lm = new LogMessage(log_header_split, log_body);
 
-                    log_list.Add(lm);
+                    logs.Add(lm);
 
                 }
-                logs = new Log_Collection(log_list);
-                drawDataGrid(log_list);
-                displayInfo(logs);
+                logModel = new LogCollection(logs);
+                drawDataGrid(logs);
+                displayInfo(logModel);
                 initializeCheckedLIstBox();
             }
         }
 
-        private void displayInfo(Log_Collection logs)
+        private void displayInfo(LogCollection logModel)
         {
-            int[] temp = logs.getTypeCount();
+            int[] temp = logModel.GetTypeCount();
             typeCountBox.AppendText("INFO: " + temp[0]);
             typeCountBox.AppendText(Environment.NewLine);
             typeCountBox.AppendText("WARNING: " + temp[1]);
             typeCountBox.AppendText(Environment.NewLine);
             typeCountBox.AppendText("ERROR: " + temp[2]);
 
-            foreach(string source in logs.getSources())
+            foreach (string source in logModel.GetSources())
             {
-                SourceCountBox.AppendText(source+" : "+logs.getSourceCount(source));
+                SourceCountBox.AppendText(source+" : "+logModel.GetSourceCount(source));
                 SourceCountBox.AppendText(Environment.NewLine);
             }
 
-            if(logs.getStartDate() == logs.getEndDate())
+            if (logModel.GetStartDate() == logModel.GetEndDate())
             {
-                dateTextBox.AppendText("Date: " + logs.getStartDate());
+                dateTextBox.AppendText("Date: " + logModel.GetStartDate());
                 dateTextBox.AppendText(Environment.NewLine);
             }
             else
             {
-                dateTextBox.AppendText("From Date: " + logs.getStartDate());
+                dateTextBox.AppendText("From Date: " + logModel.GetStartDate());
                 dateTextBox.AppendText(Environment.NewLine);
-                dateTextBox.AppendText("To Date: " + logs.getEndDate());
+                dateTextBox.AppendText("To Date: " + logModel.GetEndDate());
                 dateTextBox.AppendText(Environment.NewLine);
             }
-            dateTextBox.AppendText("Starting Time: "+logs.getStartTime());
+            dateTextBox.AppendText("Starting Time: "+logModel.GetStartTime());
             dateTextBox.AppendText(Environment.NewLine);
-            dateTextBox.AppendText("Ending Time: " + logs.getEndTime());
+            dateTextBox.AppendText("Ending Time: " + logModel.GetEndTime());
             dateTextBox.AppendText(Environment.NewLine);
-            dateTextBox.AppendText("Duration: " + logs.getLogDuration());
+            dateTextBox.AppendText("Duration: " + logModel.GetLogDuration());
             dateTextBox.AppendText(Environment.NewLine);
 
         }
 
-        private void drawDataGrid(List<LogMessage> log_list)
+        private void drawDataGrid(List<LogMessage> logs)
         {
-            foreach (LogMessage log in log_list)
+            foreach (LogMessage log in logs)
             {
                 if (log.messageSource != null)
                 {
-                    string[] s = { log.typeAsString(), log.messageSource, 
+                    string[] s = { log.TypeAsString(), log.messageSource, 
                         log.messageTimestamp.ToString(), log.messageBody };
                     logDataGridView.Rows.Add(s);
                 }
-                
-            }
-            
+            } 
         }
-
 
         private void filterDisplayDatarid()
         {
-            List<LogMessage> log_list = new List<LogMessage>();
+            List<LogMessage> logs = new List<LogMessage>();
             
             if (infoChkBox.Checked)
             {
-                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(), 
+                logs.AddRange(LogAnalyzer.GetListWIthMessageType(logModel.GetLogs(), 
                     LogMessage.MessageType.Info));
             }
             if (warningChkBox.Checked)
             {
-                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(),
+                logs.AddRange(LogAnalyzer.GetListWIthMessageType(logModel.GetLogs(),
                     LogMessage.MessageType.Warning));
             }
             if (errorChkBox.Checked)
             {
-                log_list.AddRange(Log_Analyzer.getListWIthMessageType(logs.getLogs(),
+                logs.AddRange(LogAnalyzer.GetListWIthMessageType(logModel.GetLogs(),
                     LogMessage.MessageType.Error));
             }
-            log_list = filterSources(log_list);
+            logs = filterSources(logs);
             this.logDataGridView.Rows.Clear();
-            drawDataGrid(log_list);
+            drawDataGrid(logs);
         }
 
-        private List<LogMessage> filterSources(List<LogMessage> input_log_list)
+        private List<LogMessage> filterSources(List<LogMessage> inputLogs)
         {
-            List<LogMessage> log_list = new List<LogMessage>();
+            List<LogMessage> logs = new List<LogMessage>();
             for (int i = 0; i < sourceCheckedListBox.CheckedItems.Count; i++)
             {
                 if (sourceCheckedListBox.GetItemChecked(i))
                 {
-                    log_list.AddRange(Log_Analyzer.getListWIthMessageSource(input_log_list,
+                    logs.AddRange(LogAnalyzer.GetListWIthMessageSource(inputLogs,
                     sourceCheckedListBox.Items[i].ToString()));
                 }       
             }
-            return log_list;
+            return logs;
         }
 
         private void initializeCheckedLIstBox()
         {
-            foreach (string key in logs.getSources())
+            foreach (string key in logModel.GetSources())
             {
                 sourceCheckedListBox.Items.Add(key, CheckState.Checked);
             }
@@ -182,8 +178,7 @@ namespace WindowsFormsAppLogs
                 sourceTextBox.Text = source;
                 timeStampTextBox.Text = timeStamp;
                 bodyTextBox.Text = "";
-                List<string> row_values = Log_Analyzer.parseMessageBody(body);
-                //bodyTextBox.Text = "" + row_values.Count;
+                List<string> row_values = LogAnalyzer.parseMessageBody(body);
                 if (row_values.Count <= 1)
                 {
                     bodyTextBox.Text = row_values[0];
@@ -194,21 +189,18 @@ namespace WindowsFormsAppLogs
                     {
                         bodyTextBox.Text = bodyTextBox.Text + s + "\r\n";
                     }
-                }
-                
+                }  
             }
         }
 
         private void saveCsvBtn_Click(object sender, EventArgs e)
         {
-            
-
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 DataTable dt = logDataGridView.DataSource as DataTable;
 
-                var textwriter = new StringWriter();
-                var csv = new CsvWriter(textwriter, CultureInfo.InvariantCulture);
+                var textWriter = new StringWriter();
+                var csv = new CsvWriter(textWriter, CultureInfo.InvariantCulture);
 
                 foreach (DataColumn dc in dt.Columns)
                 {
@@ -225,8 +217,8 @@ namespace WindowsFormsAppLogs
                     csv.NextRecord();
                 }
 
-                string data = textwriter.ToString();
-                textwriter.Flush();
+                string data = textWriter.ToString();
+                textWriter.Flush();
                 File.WriteAllText(saveFileDialog1.FileName + ".csv", data);
             }
         }

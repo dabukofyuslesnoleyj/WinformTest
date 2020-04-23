@@ -29,7 +29,7 @@ namespace WindowsFormsAppLogs
         public LogMessage(List<string> log_params, string log_body)
         {
             completeMessage = string.Join("", log_params);
-            if(log_params.Count > 1)
+            if (log_params.Count > 1)
             {
                 switch (log_params[0])
                 {
@@ -41,34 +41,15 @@ namespace WindowsFormsAppLogs
                 messageTimestamp = DateTime.Parse(log_params[2]);
                 messageBody = log_body;
                 hasJson = false;
-                parseBody();
             }
             
-        }
-
-        private void parseBody()
-        {
-            //if (messageBody[0].Contains("#json"))
-            //{
-            //    hasJson = true;
-            //    string temp = "";
-            //    foreach (string val in messageBody)
-            //    {
-            //        temp = string.Join(",", temp, val);
-            //    }
-            //    temp.Remove(temp.Length - 1, 1);
-            //    messageBody = temp.Split('#');
-            //    string data = "[" + messageBody[1] + ",]";
-            //    bodyJson = JsonConvert.DeserializeObject<DataTable>(data);
-            //}
-
         }
 
         public override string ToString()
         {
             return completeMessage;
         }
-        public string typeAsString()
+        public string TypeAsString()
         {
             switch (messageType)
             {

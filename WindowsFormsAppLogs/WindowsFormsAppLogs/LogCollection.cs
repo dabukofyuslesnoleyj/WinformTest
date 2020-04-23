@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace WindowsFormsAppLogs
 {
-    public class Log_Collection
+    public class LogCollection
     {
         //THINGS TO ANALYZE*************
         /*
@@ -21,27 +21,34 @@ namespace WindowsFormsAppLogs
         Ignore Routine Messages?
         Message correlation 
         */
-        private List<LogMessage> log_list {get; set;}
+        private List<LogMessage> logs {get; set;}
         private int warningCount;
         private int errorCount;
+        private int infoCount;
 
         private Dictionary <string, int> messageSourceCount;
 
         private DateTime startTime;
         private DateTime endTime;
         private TimeSpan logDuration;
-        public Log_Collection (List<LogMessage> logMessages)
+        public LogCollection (List<LogMessage> logMessages)
         {
-            log_list = logMessages;
+            logs = logMessages;
 
-            startTime = log_list[0].messageTimestamp;
-            endTime = log_list[log_list.Count - 2].messageTimestamp;
+            startTime = logs[0].messageTimestamp;
+
+            if(logs.Count > 1) 
+                endTime = logs[logs.Count - 2].messageTimestamp;
+            else if(logs.Count == 1)
+                endTime = logs[0].messageTimestamp;
+
             logDuration = endTime.Subtract(startTime);
 
             messageSourceCount = new Dictionary<string, int>();
-            foreach (LogMessage lm in log_list)
+
+            foreach (LogMessage lm in logs)
             {
-                if(lm.messageSource != null)
+                if (lm.messageSource != null)
                 {
                     if (messageSourceCount.ContainsKey(lm.messageSource))
                     {
@@ -51,63 +58,59 @@ namespace WindowsFormsAppLogs
                     {
                         messageSourceCount.Add(lm.messageSource, 1);
                     }
-                }
-                
+                }   
 
-                if(lm.messageType == LogMessage.MessageType.Warning)
-                {
+                if (lm.messageType == LogMessage.MessageType.Warning)
                     warningCount++;
-                }
-                else if(lm.messageType == LogMessage.MessageType.Error)
-                {
+                else if (lm.messageType == LogMessage.MessageType.Error)
                     errorCount++;
-                }
+                else if (lm.messageType == LogMessage.MessageType.Info)
+                    infoCount++;
             }
         }
 
-        public List<LogMessage> getLogs()
+        public List<LogMessage> GetLogs()
         {
-            return log_list;
+            return logs;
         }
 
-        public int[] getTypeCount()
+        public int[] GetTypeCount()
         {
-            int info_count = log_list.Count - warningCount - errorCount;
-            int[] temp = { info_count, warningCount, errorCount };
+            int[] temp = { infoCount, warningCount, errorCount };
             return temp;
         }
 
-        public List<string> getSources()
+        public List<string> GetSources()
         {
             return 
                (from keys in messageSourceCount.Keys select keys).ToList();
         }
 
-        public int getSourceCount(string key)
+        public int GetSourceCount(string key)
         {
             return messageSourceCount[key];
         }
 
-        public string getStartDate()
+        public string GetStartDate()
         {
             return startTime.ToString("dd/MM/yyyy");
         }
-        public string getStartTime()
+        public string GetStartTime()
         {
             return startTime.ToString("HH:mm");
         }
 
-        public string getEndDate()
+        public string GetEndDate()
         {
             return endTime.ToString("dd/MM/yyyy");
         }
 
-        public string getEndTime()
+        public string GetEndTime()
         {
             return endTime.ToString("HH:mm");
         }
 
-        public string getLogDuration()
+        public string GetLogDuration()
         {
             return logDuration.ToString();
         }
