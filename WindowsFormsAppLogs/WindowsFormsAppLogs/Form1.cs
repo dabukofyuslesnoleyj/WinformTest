@@ -184,16 +184,17 @@ namespace WindowsFormsAppLogs
                 sourceTextBox.Text = source;
                 timeStampTextBox.Text = timeStamp;
                 bodyTextBox.Text = "";
-                List<string> row_values = LogAnalyzer.parseMessageBody(body);
-                if (row_values.Count <= 1)
+                List<string> rowValues = LogAnalyzer.parseMessageBody(body);
+                if (rowValues.Count <= 1)
                 {
-                    bodyTextBox.Text = row_values[0];
+                    bodyTextBox.Text = rowValues[0];
                 }
                 else
                 {
-                    foreach (string s in row_values)
+                    foreach (string s in rowValues)
                     {
-                        bodyTextBox.Text = bodyTextBox.Text + s + "\r\n";
+                        string message = bodyTextBox.Text + s + "\r\n";
+                        bodyTextBox.Text = message; 
                     }
                 }  
             }
