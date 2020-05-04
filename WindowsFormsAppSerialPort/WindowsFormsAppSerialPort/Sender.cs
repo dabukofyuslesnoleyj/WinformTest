@@ -11,7 +11,7 @@ namespace WindowsFormsAppSerialPort
     {
         public void send()
         {
-
+            //TODO: implement sender function with sockets
         }
     }
 }
