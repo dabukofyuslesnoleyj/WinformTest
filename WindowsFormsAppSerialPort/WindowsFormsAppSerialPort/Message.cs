@@ -1,4 +1,4 @@
-
+using System;
 
 namespace WindowsFormsAppSerialPort
 {
@@ -36,9 +36,31 @@ namespace WindowsFormsAppSerialPort
 
         public override string call()
         {
-            return "PONG";
+            return DataSource.GetInstance().GetData(targetName).GetAsString();
         }
     }
 
+    class SetMessage : Message
+    {
+        public string targetName;
+        public DataType newValue;
+        public SetMessage(string commandID, string targetName, string setValue, string dataType) : base(commandID)
+        {
+            this.targetName = targetName;
+            
+            switch (dataType)
+            {
+                case "int" : newValue = new IntegerDataType(Int32.Parse(setValue));
+                    break;
+                default : newValue = new StringDataType(setValue);
+                    break;
+            }
+        }
 
+        public override string call()
+        {
+            DataSource.GetInstance().SetData(targetName, newValue);
+            return "OK";
+        }
+    }
 }

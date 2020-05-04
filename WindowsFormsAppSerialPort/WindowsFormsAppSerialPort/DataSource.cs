@@ -49,6 +49,35 @@ namespace WindowsFormsAppSerialPort
 
     class DataSource
     {
-        Dictionary<string, DataType> data;
+        private static DataSource instance;
+        private Dictionary<string, DataType> data;
+
+        private DataSource()
+        {
+            data = new Dictionary<string, DataType>();
+        }
+
+        public static DataSource GetInstance()
+        {
+            if (instance == null)
+                instance = new DataSource();
+            return instance;
+        }
+
+        public DataType GetData(string key)
+        {
+            if (data.ContainsKey(key))
+                return data[key];
+            else
+                return null;
+        }
+
+        public void SetData(string key, DataType value)
+        {
+            if (data.ContainsKey(key))
+                data[key] = value;
+            else
+                data.Add(key, value);
+        }
     }
 }
