@@ -7,6 +7,7 @@ namespace WindowsFormsAppSerialPort
     {
         void AddMessage(Message message);
         Message NextMessage();
+        Message CurrentMessage();
         bool IsLastMessage();
     }
     class MessageCollection : MessageEnumerator
@@ -36,6 +37,15 @@ namespace WindowsFormsAppSerialPort
             if(!IsLastMessage())
             {
                 currCount++;
+                return messages[currCount];
+            }
+            return null;
+        }
+
+        public Message CurrentMessage()
+        {
+            if (!IsLastMessage())
+            {
                 return messages[currCount];
             }
             return null;

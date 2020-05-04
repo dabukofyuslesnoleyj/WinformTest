@@ -7,7 +7,7 @@ namespace WindowsFormsAppSerialPort
         void send();
     }
 
-    class Sender : ISender
+    class AnswerSender : ISender
     {
         public void send()
         {

@@ -33,4 +33,14 @@ namespace WindowsFormsAppSerialPort
             }
         }
     }
+
+    class Logger
+    {
+        List<string> logs;
+        public void AddLog(string log)
+        {
+            logs.Add(log);
+        }
+
+    }
 }
