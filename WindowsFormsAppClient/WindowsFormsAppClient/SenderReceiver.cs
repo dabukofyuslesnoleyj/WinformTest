@@ -184,9 +184,4 @@ public class AsynchronousClient
         }
     }
 
-    public static int Main(String[] args)
-    {
-        StartClient();
-        return 0;
-    }
 }
