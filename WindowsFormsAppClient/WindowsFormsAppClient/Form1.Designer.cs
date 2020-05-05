@@ -34,15 +34,15 @@
             this.logTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.commondComboBox = new System.Windows.Forms.ComboBox();
+            this.varNameLabel = new System.Windows.Forms.Label();
+            this.varNameTextBox = new System.Windows.Forms.TextBox();
+            this.varTypeLabel = new System.Windows.Forms.Label();
+            this.varTypeTextBox = new System.Windows.Forms.TextBox();
+            this.newValLabel = new System.Windows.Forms.Label();
+            this.newValTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sendBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -98,13 +98,13 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.label5);
-            this.flowLayoutPanel2.Controls.Add(this.comboBox1);
-            this.flowLayoutPanel2.Controls.Add(this.label4);
-            this.flowLayoutPanel2.Controls.Add(this.textBox4);
-            this.flowLayoutPanel2.Controls.Add(this.label3);
-            this.flowLayoutPanel2.Controls.Add(this.textBox3);
-            this.flowLayoutPanel2.Controls.Add(this.label2);
-            this.flowLayoutPanel2.Controls.Add(this.textBox2);
+            this.flowLayoutPanel2.Controls.Add(this.commondComboBox);
+            this.flowLayoutPanel2.Controls.Add(this.varNameLabel);
+            this.flowLayoutPanel2.Controls.Add(this.varNameTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.varTypeLabel);
+            this.flowLayoutPanel2.Controls.Add(this.varTypeTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.newValLabel);
+            this.flowLayoutPanel2.Controls.Add(this.newValTextBox);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(403, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -121,90 +121,92 @@
             this.label5.TabIndex = 7;
             this.label5.Text = "command type";
             // 
-            // comboBox1
+            // commondComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.commondComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.commondComboBox.FormattingEnabled = true;
+            this.commondComboBox.Items.AddRange(new object[] {
             "GET",
             "SET",
             "PING"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(381, 32);
-            this.comboBox1.TabIndex = 8;
+            this.commondComboBox.Location = new System.Drawing.Point(3, 32);
+            this.commondComboBox.Name = "commondComboBox";
+            this.commondComboBox.Size = new System.Drawing.Size(381, 32);
+            this.commondComboBox.TabIndex = 8;
+            this.commondComboBox.Text = "-- select command type --";
+            this.commondComboBox.SelectedIndexChanged += new System.EventHandler(this.commondComboBox_SelectedIndexChanged);
             // 
-            // label4
+            // varNameLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(164, 29);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "variable name";
+            this.varNameLabel.AutoSize = true;
+            this.varNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varNameLabel.Location = new System.Drawing.Point(3, 67);
+            this.varNameLabel.Name = "varNameLabel";
+            this.varNameLabel.Size = new System.Drawing.Size(164, 29);
+            this.varNameLabel.TabIndex = 5;
+            this.varNameLabel.Text = "variable name";
             // 
-            // textBox4
+            // varNameTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(3, 99);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(382, 29);
-            this.textBox4.TabIndex = 4;
+            this.varNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varNameTextBox.Location = new System.Drawing.Point(3, 99);
+            this.varNameTextBox.Name = "varNameTextBox";
+            this.varNameTextBox.Size = new System.Drawing.Size(382, 29);
+            this.varNameTextBox.TabIndex = 4;
             // 
-            // label3
+            // varTypeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(149, 29);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "variable type";
+            this.varTypeLabel.AutoSize = true;
+            this.varTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varTypeLabel.Location = new System.Drawing.Point(3, 131);
+            this.varTypeLabel.Name = "varTypeLabel";
+            this.varTypeLabel.Size = new System.Drawing.Size(149, 29);
+            this.varTypeLabel.TabIndex = 3;
+            this.varTypeLabel.Text = "variable type";
             // 
-            // textBox3
+            // varTypeTextBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(3, 163);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(382, 29);
-            this.textBox3.TabIndex = 2;
+            this.varTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varTypeTextBox.Location = new System.Drawing.Point(3, 163);
+            this.varTypeTextBox.Name = "varTypeTextBox";
+            this.varTypeTextBox.Size = new System.Drawing.Size(382, 29);
+            this.varTypeTextBox.TabIndex = 2;
             // 
-            // label2
+            // newValLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 195);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(121, 29);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "new value";
+            this.newValLabel.AutoSize = true;
+            this.newValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newValLabel.Location = new System.Drawing.Point(3, 195);
+            this.newValLabel.Name = "newValLabel";
+            this.newValLabel.Size = new System.Drawing.Size(121, 29);
+            this.newValLabel.TabIndex = 1;
+            this.newValLabel.Text = "new value";
             // 
-            // textBox2
+            // newValTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(3, 227);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(382, 29);
-            this.textBox2.TabIndex = 0;
+            this.newValTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newValTextBox.Location = new System.Drawing.Point(3, 227);
+            this.newValTextBox.Name = "newValTextBox";
+            this.newValTextBox.Size = new System.Drawing.Size(382, 29);
+            this.newValTextBox.TabIndex = 0;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.button1);
+            this.flowLayoutPanel3.Controls.Add(this.sendBtn);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(403, 385);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(394, 62);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
-            // button1
+            // sendBtn
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(382, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "send";
-            this.button1.UseVisualStyleBackColor = true;
+            this.sendBtn.Location = new System.Drawing.Point(3, 3);
+            this.sendBtn.Name = "sendBtn";
+            this.sendBtn.Size = new System.Drawing.Size(382, 29);
+            this.sendBtn.TabIndex = 0;
+            this.sendBtn.Text = "send";
+            this.sendBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -232,15 +234,15 @@
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label varNameLabel;
+        private System.Windows.Forms.TextBox varNameTextBox;
+        private System.Windows.Forms.Label varTypeLabel;
+        private System.Windows.Forms.TextBox varTypeTextBox;
+        private System.Windows.Forms.Label newValLabel;
+        private System.Windows.Forms.TextBox newValTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button sendBtn;
+        private System.Windows.Forms.ComboBox commondComboBox;
     }
 }
 
