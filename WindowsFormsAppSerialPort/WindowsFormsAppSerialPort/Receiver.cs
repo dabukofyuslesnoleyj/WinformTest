@@ -119,8 +119,8 @@ namespace WindowsFormsAppSerialPort
                 {
                     // All the data has been read from the
                     // client. Display it on the console.  
-                    Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
-                        content.Length, content);
+                    MessageCollection.GetInstance().AddMessage(UtilityFunctions.MessageParser(content));
+                    // TODO: Add notif that promts new message
                     // Echo the data back to the client.  
                     Send(handler, content);
                 }

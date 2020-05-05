@@ -12,19 +12,20 @@ namespace WindowsFormsAppSerialPort
     }
     class MessageCollection : MessageEnumerator
     {
+        private static MessageCollection instance;
         List<Message> messages;
         int currCount;
 
-        public MessageCollection(List<Message> messages)
-        {
-            this.messages = messages;
-            currCount = 0;
-        }
-
-        public MessageCollection()
+        private MessageCollection()
         {
             this.messages = new List<Message>();
             currCount = 0;
+        }
+        public static MessageEnumerator GetInstance()
+        {
+            if (instance == null)
+                instance = new MessageCollection();
+            return instance;
         }
         
         public void AddMessage(Message message)

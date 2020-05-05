@@ -19,7 +19,7 @@ namespace WindowsFormsAppSerialPort
         //      messageType : "int"
         //      messageValue : "1"
         //  }
-        static Message MessageParser(string json)
+        public static Message MessageParser(string json)
         {
             Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             switch (message["commandType"])
