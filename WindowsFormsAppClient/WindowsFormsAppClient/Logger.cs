@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace WindowsFormsAppClient
 {
@@ -15,13 +16,22 @@ namespace WindowsFormsAppClient
 
     class Logger : ILogger
     {
+        private static ILogger instance;
         List<ILoggerListener> loggerListeners;
         List<string> logs;
 
-        public Logger()
+        private Logger()
         {
             loggerListeners = new List<ILoggerListener>();
             logs = new List<string>();
+        }
+
+        public static ILogger GetInstance()
+        {
+            if (instance != null)
+                return instance;
+            instance = new Logger();
+            return instance;
         }
 
         public void WriteLog(string s)
@@ -30,13 +40,27 @@ namespace WindowsFormsAppClient
             
             foreach (ILoggerListener loggerListener in loggerListeners)
             {
-                loggerListener.update(s);
+                              loggerListener.update(s);
             }
         }
 
         public void Attach(ILoggerListener loggerListener)
         {
             loggerListeners.Add(loggerListener);
+        }
+    }
+
+    class LoggerListenerTextBox : ILoggerListener
+    {
+        TextBox textBox;
+
+        public LoggerListenerTextBox(TextBox tb)
+        {
+            textBox = tb;
+        }
+        public void update(String s)
+        {
+            textBox.AppendText(s + "\n");
         }
     }
 }
