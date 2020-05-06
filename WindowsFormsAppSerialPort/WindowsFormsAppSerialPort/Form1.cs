@@ -16,10 +16,12 @@ namespace WindowsFormsAppSerialPort
     public partial class Form1 : Form
     {
         IReceiver receiver;
+        ILoggerListener textBoxListener;
         public Form1()
         {
             InitializeComponent();
             receiver = new Receiver();
+            textBoxListener = new TextBoxLoggerListener(logTextBox);
         }
 
         private void startServerBtn_Click(object sender, EventArgs e)
@@ -44,8 +46,15 @@ namespace WindowsFormsAppSerialPort
                     default : value = new StringDataType(record.value);
                         break;
                 }
+
                 DataSource.GetInstance().SetData(record.name, value);
             }
         }
+
+        private void clsoeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

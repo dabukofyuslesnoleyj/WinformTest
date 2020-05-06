@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 
 namespace WindowsFormsAppSerialPort
@@ -34,13 +35,69 @@ namespace WindowsFormsAppSerialPort
         }
     }
 
-    class Logger
+    interface ILogger
     {
+        void NotifyAll(string s);
+        void Attach(ILoggerListener listener);
+    }
+
+    interface ILoggerListener
+    {
+        void update(string s);
+    }
+
+    class Logger : ILogger
+    {
+        private static ILogger instance;
+        List<ILoggerListener> listeners;
         List<string> logs;
+
+        private Logger()
+        {
+            listeners = new List<ILoggerListener>();
+            logs = new List<string>();
+        }
+
+        public static ILogger GetInstance()
+        {
+            if (instance == null)
+                instance = new Logger();
+            return instance;
+        }
+
         public void AddLog(string log)
         {
             logs.Add(log);
+            NotifyAll(log);
         }
 
+        public void NotifyAll(string s)
+        {
+            foreach (ILoggerListener listener in listeners)
+            {
+                listener.update(s);
+            }
+        }
+
+        public void Attach(ILoggerListener listener)
+        {
+            listeners.Add(listener);
+        }
+
+    }
+
+    class TextBoxLoggerListener : ILoggerListener
+    {
+        TextBox textbox;
+
+        public TextBoxLoggerListener(TextBox tb)
+        {
+            textbox = tb;
+        }
+
+        public void update(string s)
+        {
+            textbox.Text = s;
+        }
     }
 }

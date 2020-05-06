@@ -30,14 +30,14 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.logTextBox = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.clsoeBtn = new System.Windows.Forms.Button();
             this.loadDataBtn = new System.Windows.Forms.Button();
             this.startServerBtn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -65,7 +65,7 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.textBox2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.logTextBox, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -74,6 +74,26 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(554, 376);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 33);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Server Log";
+            // 
+            // logTextBox
+            // 
+            this.logTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logTextBox.Location = new System.Drawing.Point(3, 78);
+            this.logTextBox.Multiline = true;
+            this.logTextBox.Name = "logTextBox";
+            this.logTextBox.ReadOnly = true;
+            this.logTextBox.Size = new System.Drawing.Size(548, 295);
+            this.logTextBox.TabIndex = 2;
             // 
             // textBox1
             // 
@@ -104,6 +124,7 @@
             this.clsoeBtn.TabIndex = 0;
             this.clsoeBtn.Text = "close";
             this.clsoeBtn.UseVisualStyleBackColor = true;
+            this.clsoeBtn.Click += new System.EventHandler(this.clsoeBtn_Click);
             // 
             // loadDataBtn
             // 
@@ -134,26 +155,6 @@
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 33);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Server Log";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(3, 78);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(548, 295);
-            this.textBox2.TabIndex = 2;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,7 +183,7 @@
         private System.Windows.Forms.Button startServerBtn;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox logTextBox;
     }
 }
 
