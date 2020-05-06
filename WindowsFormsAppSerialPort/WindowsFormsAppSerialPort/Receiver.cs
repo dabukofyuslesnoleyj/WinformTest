@@ -121,8 +121,8 @@ namespace WindowsFormsAppSerialPort
                     // client. Display it on the console.  
                     MessageCollection.GetInstance().AddMessage(UtilityFunctions.MessageParser(content));
                     // TODO: Add notif that promts new message
-                    // Echo the data back to the client.  
-                    Send(handler, content);
+                    // Send response 
+                    Send(handler, MessageCollection.GetInstance().NextMessage().call());
                 }
                 else
                 {

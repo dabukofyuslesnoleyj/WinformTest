@@ -60,8 +60,8 @@ namespace WindowsFormsAppClient
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            string[] input = [currMessage + idCount, currMessage, varNameTextBox.Text,
-                varTypeTextBox.Text, newValTextBox.Text];
+            string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
+                varTypeTextBox.Text, newValTextBox.Text };
             AsynchronousClient.StartClient(AsynchronousClient.JsonMessageBuilder(input));
         }
     }
