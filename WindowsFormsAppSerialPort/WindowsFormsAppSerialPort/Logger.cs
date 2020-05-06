@@ -14,7 +14,7 @@ namespace WindowsFormsAppSerialPort
         //  }
         //  {
         //      commandID : "s0001"
-        //      commandType : "GET"
+        //      commandType : "SET"
         //      messageTarget : "name"
         //      messageType : "int"
         //      messageValue : "1"

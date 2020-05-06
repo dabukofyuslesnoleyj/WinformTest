@@ -3,6 +3,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System.Text;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace WindowsFormsAppClient
 {
@@ -36,7 +38,7 @@ namespace WindowsFormsAppClient
         // The response from the remote device.  
         private static String response = String.Empty;
 
-        private static void StartClient()
+        public static void StartClient(string messageToSend)
         {
             // Connect to a remote device.  
             try
@@ -57,8 +59,7 @@ namespace WindowsFormsAppClient
                     new AsyncCallback(ConnectCallback), client);
                 connectDone.WaitOne();
 
-                // Send test data to the remote device.  
-                Send(client, "This is a test<EOF>");
+                Send(client, messageToSend + "<EOF>");
                 sendDone.WaitOne();
 
                 // Receive the response from the remote device.  
@@ -185,6 +186,38 @@ namespace WindowsFormsAppClient
             {
                 Logger.GetInstance().WriteLog(e.ToString());
             }
+        }
+        //      commandID : "s0001"
+        //      commandType : "SET"
+        //      messageTarget : "name"
+        //      messageType : "int"
+        //      messageValue : "1"
+        public static string JsonMessageBuilder (string[] message)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            string jsonData = "";
+            switch(message[1])
+            {
+                case "GET" :
+                    data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
+                    data.Add("messageTarget", message[2]);
+                    break;
+                case "SET":
+                    data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
+                    data.Add("messageTarget", message[2]);
+                    data.Add("messageType", message[3]);
+                    data.Add("messageValue", message[4]);
+                    break;
+                case "PING":
+                    data.Add("commandID", message[0]);
+                    break;
+                default :
+                    break;
+            }
+            jsonData = JsonConvert.SerializeObject(data);
+            return jsonData;
         }
 
     }

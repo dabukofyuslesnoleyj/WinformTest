@@ -207,6 +207,7 @@
             this.sendBtn.TabIndex = 0;
             this.sendBtn.Text = "send";
             this.sendBtn.UseVisualStyleBackColor = true;
+            this.sendBtn.Click += new System.EventHandler(this.sendBtn_Click);
             // 
             // Form1
             // 
