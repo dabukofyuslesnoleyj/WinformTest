@@ -3,6 +3,13 @@ using System;
 
 namespace WindowsFormsAppSerialPort
 {
+    class CSVRawData
+    {
+        public string name;
+        public string dataType;
+        public string value;
+    }
+    
     interface DataType
     {
         string GetAsString();
