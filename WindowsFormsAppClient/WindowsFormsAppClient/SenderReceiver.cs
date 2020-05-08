@@ -46,7 +46,7 @@ namespace WindowsFormsAppClient
                 // Establish the remote endpoint for the socket.  
                 // The name of the
                 // remote device is "host.contoso.com".  
-                IPHostEntry ipHostInfo = Dns.GetHostEntry("host.contoso.com");
+                IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
@@ -56,14 +56,14 @@ namespace WindowsFormsAppClient
 
                 // Connect to the remote endpoint.  
                 client.BeginConnect(remoteEP,
-                    new AsyncCallback(ConnectCallback), client);
+                    new AsyncCallback(connectCallback), client);
                 connectDone.WaitOne();
 
-                Send(client, messageToSend + "<EOF>");
+                send(client, messageToSend + "<EOF>");
                 sendDone.WaitOne();
 
                 // Receive the response from the remote device.  
-                Receive(client);
+                receive(client);
                 receiveDone.WaitOne();
 
                 // Write the response to the console.  
@@ -76,11 +76,11 @@ namespace WindowsFormsAppClient
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Logger.GetInstance().WriteLog(e.ToString());
             }
         }
 
-        private static void ConnectCallback(IAsyncResult ar)
+        private static void connectCallback(IAsyncResult ar)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace WindowsFormsAppClient
             }
         }
 
-        private static void Receive(Socket client)
+        private static void receive(Socket client)
         {
             try
             {
@@ -112,7 +112,7 @@ namespace WindowsFormsAppClient
 
                 // Begin receiving the data from the remote device.  
                 client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                    new AsyncCallback(ReceiveCallback), state);
+                    new AsyncCallback(receiveCallback), state);
             }
             catch (Exception e)
             {
@@ -120,7 +120,7 @@ namespace WindowsFormsAppClient
             }
         }
 
-        private static void ReceiveCallback(IAsyncResult ar)
+        private static void receiveCallback(IAsyncResult ar)
         {
             try
             {
@@ -139,7 +139,7 @@ namespace WindowsFormsAppClient
 
                     // Get the rest of the data.  
                     client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                        new AsyncCallback(ReceiveCallback), state);
+                        new AsyncCallback(receiveCallback), state);
                 }
                 else
                 {
@@ -158,17 +158,17 @@ namespace WindowsFormsAppClient
             }
         }
 
-        private static void Send(Socket client, String data)
+        private static void send(Socket client, String data)
         {
             // Convert the string data to byte data using ASCII encoding.  
             byte[] byteData = Encoding.ASCII.GetBytes(data);
 
             // Begin sending the data to the remote device.  
             client.BeginSend(byteData, 0, byteData.Length, 0,
-                new AsyncCallback(SendCallback), client);
+                new AsyncCallback(sendCallback), client);
         }
 
-        private static void SendCallback(IAsyncResult ar)
+        private static void sendCallback(IAsyncResult ar)
         {
             try
             {
@@ -219,6 +219,5 @@ namespace WindowsFormsAppClient
             jsonData = JsonConvert.SerializeObject(data);
             return jsonData;
         }
-
     }
 }

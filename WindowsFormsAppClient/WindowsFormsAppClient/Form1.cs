@@ -15,15 +15,13 @@ namespace WindowsFormsAppClient
 {
     public partial class Form1 : Form
     {
-        LoggerListenerTextBox listenerTextBox;
-        AsynchronousClient client;
         string currMessage;
         int idCount;
         public Form1()
         {
             InitializeComponent();
-            Logger.GetInstance();
-            listenerTextBox = new LoggerListenerTextBox(logTextBox);
+            Logger.GetInstance().Attach(new LoggerListenerTextBox(this, logTextBox));
+
             idCount = 0;
         }
 
@@ -60,25 +58,19 @@ namespace WindowsFormsAppClient
                     break;
             }
         }
-
         private void sendBtn_Click(object sender, EventArgs e)
         {
             string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
                 varTypeTextBox.Text, newValTextBox.Text };
+            Logger.GetInstance().WriteLog(AsynchronousClient.JsonMessageBuilder(input));
             AsynchronousClient.StartClient(AsynchronousClient.JsonMessageBuilder(input));
         }
-        //      commandID : "s0001"
-        //      commandType : "SET"
-        //      messageTarget : "name"
-        //      messageType : "int"
-        //      messageValue : "1"
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string data = File.ReadAllText(openFileDialog1.FileName);
                 AsynchronousClient.StartClient(data);
-
             }
         }
     }

@@ -53,14 +53,26 @@ namespace WindowsFormsAppClient
     class LoggerListenerTextBox : ILoggerListener
     {
         TextBox textBox;
+        Form mainForm;
 
-        public LoggerListenerTextBox(TextBox tb)
+        public LoggerListenerTextBox(Form f, TextBox tb)
         {
+            mainForm = f;
             textBox = tb;
         }
+        delegate void SetTextCallback(string text);
         public void update(String s)
         {
-            textBox.AppendText(s + "\n");
+            if (textBox.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(update);
+                mainForm.Invoke(d, new object[] { s });
+
+            }
+            else
+            {
+                textBox.AppendText(s);
+            }
         }
     }
 }
