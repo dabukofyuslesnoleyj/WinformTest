@@ -61,7 +61,7 @@ namespace WindowsFormsAppSerialPort
                     allDone.Reset();
 
                     // Start an asynchronous socket to listen for connections.  
-                    Console.WriteLine("Waiting for a connection...");
+                    Logger.GetInstance().NotifyAll("Waiting for a connection...");
                     listener.BeginAccept(
                         new AsyncCallback(AcceptCallback),
                         listener);
@@ -152,7 +152,7 @@ namespace WindowsFormsAppSerialPort
 
                 // Complete sending the data to the remote device.  
                 int bytesSent = handler.EndSend(ar);
-                Console.WriteLine("Sent {0} bytes to client.", bytesSent);
+                Logger.GetInstance().NotifyAll("Sent " + bytesSent + " bytes to client.");
 
                 handler.Shutdown(SocketShutdown.Both);
                 handler.Close();
@@ -160,7 +160,7 @@ namespace WindowsFormsAppSerialPort
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Logger.GetInstance().NotifyAll(e.ToString());
             }
         }
 

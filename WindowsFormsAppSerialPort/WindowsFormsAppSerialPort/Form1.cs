@@ -27,6 +27,7 @@ namespace WindowsFormsAppSerialPort
         private void startServerBtn_Click(object sender, EventArgs e)
         {
             receiver.StartReceiving();
+            Logger.GetInstance().NotifyAll("server is now listening to client.....");
         }
 
         private void loadDataBtn_Click(object sender, EventArgs e)
@@ -36,9 +37,12 @@ namespace WindowsFormsAppSerialPort
 
             var records = csv.GetRecords<CSVRawData>();
 
+            Logger.GetInstance().NotifyAll("Loading Data source.....");
+
             foreach (CSVRawData record in records)
             {
                 DataType value;
+                Logger.GetInstance().NotifyAll("Loading variable named " + record.name);
                 switch (record.name)
                 {
                     case "int" : value = new IntegerDataType(Int32.Parse(record.value));
@@ -49,6 +53,7 @@ namespace WindowsFormsAppSerialPort
 
                 DataSource.GetInstance().SetData(record.name, value);
             }
+            Logger.GetInstance().NotifyAll("Finished loading data");
         }
 
         private void clsoeBtn_Click(object sender, EventArgs e)
