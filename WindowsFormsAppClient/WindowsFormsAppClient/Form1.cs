@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Json.Net;
+using Newtonsoft.Json;
 
 namespace WindowsFormsAppClient
 {
@@ -63,6 +66,20 @@ namespace WindowsFormsAppClient
             string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
                 varTypeTextBox.Text, newValTextBox.Text };
             AsynchronousClient.StartClient(AsynchronousClient.JsonMessageBuilder(input));
+        }
+        //      commandID : "s0001"
+        //      commandType : "SET"
+        //      messageTarget : "name"
+        //      messageType : "int"
+        //      messageValue : "1"
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string data = File.ReadAllText(openFileDialog1.FileName);
+                AsynchronousClient.StartClient(data);
+
+            }
         }
     }
 }

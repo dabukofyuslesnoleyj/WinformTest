@@ -97,7 +97,8 @@ namespace WindowsFormsAppSerialPort
 
         public void update(string s)
         {
-            textbox.Text = s;
+            textbox.AppendText(s);
+            textbox.AppendText(System.Environment.NewLine);
         }
     }
 }

@@ -36,6 +36,12 @@ namespace WindowsFormsAppSerialPort
         List<IReceiverListener> receiverListeners;
         // Thread signal.  
         public static ManualResetEvent allDone = new ManualResetEvent(false);
+
+        public Receiver()
+        {
+            receiverListeners = new List<IReceiverListener>();
+        }
+
         public void StartReceiving()
         {
             // Establish the local endpoint for the socket.  

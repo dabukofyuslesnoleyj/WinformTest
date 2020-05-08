@@ -22,12 +22,13 @@ namespace WindowsFormsAppSerialPort
             InitializeComponent();
             receiver = new Receiver();
             textBoxListener = new TextBoxLoggerListener(logTextBox);
+            Logger.GetInstance().Attach(textBoxListener);
+            Logger.GetInstance().NotifyAll("logger initialized...");
         }
 
         private void startServerBtn_Click(object sender, EventArgs e)
         {
             receiver.StartReceiving();
-            Logger.GetInstance().NotifyAll("server is now listening to client.....");
         }
 
         private void loadDataBtn_Click(object sender, EventArgs e)
