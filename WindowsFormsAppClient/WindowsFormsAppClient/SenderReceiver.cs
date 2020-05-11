@@ -218,6 +218,7 @@ namespace WindowsFormsAppClient
                     break;
                 case "PING":
                     data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
                     break;
                 default :
                     break;

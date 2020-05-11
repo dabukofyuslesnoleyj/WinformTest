@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -22,6 +23,11 @@ namespace WindowsFormsAppSerialPort
         //  }
         public static Message MessageParser(string json)
         {
+
+            if (json.Contains("<EOF>"))
+            {
+                json = json.Substring(0, json.Length - 5);
+            }
             Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
             switch (message["commandType"])
             {
@@ -84,6 +90,24 @@ namespace WindowsFormsAppSerialPort
             listeners.Add(listener);
         }
 
+    }
+
+    class FileWriterLoggerListener : ILoggerListener
+    {
+        string filename;
+
+        public FileWriterLoggerListener(string fn)
+        {
+            filename = fn;
+        }
+
+        public void update(string s)
+        {
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                writer.WriteLine(s);
+            }
+        }
     }
 
     class TextBoxLoggerListener : ILoggerListener

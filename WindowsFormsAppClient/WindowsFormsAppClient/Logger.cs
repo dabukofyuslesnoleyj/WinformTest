@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsAppClient
@@ -50,6 +51,24 @@ namespace WindowsFormsAppClient
         }
     }
 
+    class LoggerListenerFileWriter : ILoggerListener
+    {
+        string filename;
+
+        public LoggerListenerFileWriter(string fn)
+        {
+            filename = fn;
+        }
+
+        public void update(string s)
+        {
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                writer.WriteLine(s);
+            }
+        }
+    }
+
     class LoggerListenerTextBox : ILoggerListener
     {
         TextBox textBox;
@@ -61,7 +80,7 @@ namespace WindowsFormsAppClient
             textBox = tb;
         }
         delegate void SetTextCallback(string text);
-        public void update(String s)
+        public void update(string s)
         {
             if (textBox.InvokeRequired)
             {

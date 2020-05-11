@@ -24,6 +24,7 @@ namespace WindowsFormsAppSerialPort
             receiver = new Receiver();
             textBoxListener = new TextBoxLoggerListener(this, logTextBox);
             Logger.GetInstance().Attach(textBoxListener);
+            Logger.GetInstance().Attach(new FileWriterLoggerListener("logs.txt"));
             Logger.GetInstance().NotifyAll("logger initialized...");
         }
 

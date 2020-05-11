@@ -22,6 +22,7 @@ namespace WindowsFormsAppClient
         {
             InitializeComponent();
             Logger.GetInstance().Attach(new LoggerListenerTextBox(this, logTextBox));
+            Logger.GetInstance().Attach(new LoggerListenerFileWriter("log.txt"));
 
             idCount = 0;
         }
