@@ -1,0 +1,6 @@
+name,dataType,value
+userName,str,Richmond
+cost,int,1000
+userCount,int,5
+building,str,3F
+idNo,str,11402288
