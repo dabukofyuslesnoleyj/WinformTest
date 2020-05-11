@@ -101,4 +101,24 @@ namespace WindowsFormsAppSerialPort
             textbox.AppendText(System.Environment.NewLine);
         }
     }
+
+    interface ITextChanger
+    {
+        void changeText(string s);
+    }
+
+    class IPTextChanger : ITextChanger
+    {
+        TextBox textbox;
+
+        public IPTextChanger(TextBox tb)
+        {
+            textbox = tb;
+        }
+
+        public void changeText(string s)
+        {
+            textbox.Text = s;
+        }
+    }
 }

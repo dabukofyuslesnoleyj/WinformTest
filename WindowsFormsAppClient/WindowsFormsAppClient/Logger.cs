@@ -75,4 +75,23 @@ namespace WindowsFormsAppClient
             }
         }
     }
+
+    public interface ITextChanger
+    {
+        void changeText(string s);
+    }
+
+    public class IPAddressTextChanger : ITextChanger
+    {
+        TextBox textbox;
+
+        public IPAddressTextChanger (TextBox tb)
+        {
+            textbox = tb;
+        }
+        public void changeText(string s)
+        {
+            textbox.Text = s;
+        }
+    }
 }

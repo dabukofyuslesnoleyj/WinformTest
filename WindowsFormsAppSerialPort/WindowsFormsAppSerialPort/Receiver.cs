@@ -126,6 +126,7 @@ namespace WindowsFormsAppSerialPort
                     // All the data has been read from the
                     // client. Display it on the console.  
                     MessageCollection.GetInstance().AddMessage(UtilityFunctions.MessageParser(content));
+                    Logger.GetInstance().NotifyAll("Received a message");
                     // TODO: Add notif that promts new message
                     // Send response 
                     Send(handler, MessageCollection.GetInstance().NextMessage().call());
@@ -143,6 +144,8 @@ namespace WindowsFormsAppSerialPort
         {
             // Convert the string data to byte data using ASCII encoding.  
             byte[] byteData = Encoding.ASCII.GetBytes(data);
+
+            Logger.GetInstance().NotifyAll("Sending " + data);
 
             // Begin sending the data to the remote device.  
             handler.BeginSend(byteData, 0, byteData.Length, 0,

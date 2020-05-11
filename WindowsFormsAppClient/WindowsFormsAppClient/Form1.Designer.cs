@@ -45,6 +45,8 @@
             this.sendBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.IPTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -71,6 +73,8 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.label2);
+            this.flowLayoutPanel1.Controls.Add(this.IPTextBox);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.logTextBox);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(3, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 31);
             this.label1.TabIndex = 1;
@@ -91,11 +95,11 @@
             // 
             // logTextBox
             // 
-            this.logTextBox.Location = new System.Drawing.Point(3, 34);
+            this.logTextBox.Location = new System.Drawing.Point(3, 86);
             this.logTextBox.Multiline = true;
             this.logTextBox.Name = "logTextBox";
             this.logTextBox.ReadOnly = true;
-            this.logTextBox.Size = new System.Drawing.Size(391, 342);
+            this.logTextBox.Size = new System.Drawing.Size(391, 237);
             this.logTextBox.TabIndex = 0;
             // 
             // flowLayoutPanel2
@@ -226,6 +230,25 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // IPTextBox
+            // 
+            this.IPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IPTextBox.Location = new System.Drawing.Point(3, 23);
+            this.IPTextBox.Name = "IPTextBox";
+            this.IPTextBox.ReadOnly = true;
+            this.IPTextBox.Size = new System.Drawing.Size(391, 26);
+            this.IPTextBox.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "IP Address";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,6 +286,8 @@
         private System.Windows.Forms.ComboBox commondComboBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox IPTextBox;
     }
 }
 

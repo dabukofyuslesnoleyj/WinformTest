@@ -38,7 +38,7 @@ namespace WindowsFormsAppClient
         // The response from the remote device.  
         private static String response = String.Empty;
 
-        public static void StartClient(string messageToSend)
+        public static void StartClient(string messageToSend, ITextChanger ipTextChanger)
         {
             // Connect to a remote device.  
             try
@@ -49,6 +49,8 @@ namespace WindowsFormsAppClient
                 IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
+
+                ipTextChanger.changeText(ipAddress.ToString());
 
                 // Create a TCP/IP socket.  
                 Socket client = new Socket(ipAddress.AddressFamily,
@@ -134,6 +136,7 @@ namespace WindowsFormsAppClient
 
                 if (bytesRead > 0)
                 {
+                    Console.WriteLine("still receiving");
                     // There might be more data, so store the data received so far.  
                     state.sb.Append(Encoding.ASCII.GetString(state.buffer, 0, bytesRead));
 
@@ -163,6 +166,8 @@ namespace WindowsFormsAppClient
             // Convert the string data to byte data using ASCII encoding.  
             byte[] byteData = Encoding.ASCII.GetBytes(data);
 
+            Logger.GetInstance().WriteLog("Whole string sent : " + data);
+
             // Begin sending the data to the remote device.  
             client.BeginSend(byteData, 0, byteData.Length, 0,
                 new AsyncCallback(sendCallback), client);
@@ -172,6 +177,7 @@ namespace WindowsFormsAppClient
         {
             try
             {
+                Console.WriteLine("still sending");
                 // Retrieve the socket from the state object.  
                 Socket client = (Socket)ar.AsyncState;
 

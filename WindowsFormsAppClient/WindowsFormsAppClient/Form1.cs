@@ -62,15 +62,16 @@ namespace WindowsFormsAppClient
         {
             string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
                 varTypeTextBox.Text, newValTextBox.Text };
-            Logger.GetInstance().WriteLog(AsynchronousClient.JsonMessageBuilder(input));
-            AsynchronousClient.StartClient(AsynchronousClient.JsonMessageBuilder(input));
+            string jsonInput = AsynchronousClient.JsonMessageBuilder(input);
+            Logger.GetInstance().WriteLog(jsonInput);
+            AsynchronousClient.StartClient(jsonInput, new IPAddressTextChanger(IPTextBox));
         }
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string data = File.ReadAllText(openFileDialog1.FileName);
-                AsynchronousClient.StartClient(data);
+                AsynchronousClient.StartClient(data, new IPAddressTextChanger(IPTextBox));
             }
         }
     }
