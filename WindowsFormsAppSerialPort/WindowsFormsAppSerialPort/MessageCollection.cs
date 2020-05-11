@@ -35,11 +35,11 @@ namespace WindowsFormsAppSerialPort
 
         public Message NextMessage()
         {
-            if(!IsLastMessage())
+            if (!IsLastMessage())
             {
-                currCount++;
                 return messages[currCount];
             }
+            currCount++;
             return null;
         }
 
