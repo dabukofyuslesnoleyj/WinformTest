@@ -89,16 +89,27 @@ namespace WindowsFormsAppSerialPort
     class TextBoxLoggerListener : ILoggerListener
     {
         TextBox textbox;
+        Form form;
 
-        public TextBoxLoggerListener(TextBox tb)
+        public TextBoxLoggerListener(Form f, TextBox tb)
         {
+            form = f;
             textbox = tb;
         }
-
+        delegate void SetTextCallback(string text);
         public void update(string s)
         {
-            textbox.AppendText(s);
-            textbox.AppendText(System.Environment.NewLine);
+            if (textbox.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(update);
+                form.Invoke(d, new object[] { s });
+
+            }
+            else
+            {
+                textbox.AppendText(s);
+                textbox.AppendText(System.Environment.NewLine);
+            }
         }
     }
 
@@ -110,15 +121,26 @@ namespace WindowsFormsAppSerialPort
     class IPTextChanger : ITextChanger
     {
         TextBox textbox;
+        Form form;
 
-        public IPTextChanger(TextBox tb)
+        public IPTextChanger(Form f, TextBox tb)
         {
+            form = f;
             textbox = tb;
         }
-
+        delegate void SetTextCallback(string text);
         public void changeText(string s)
         {
-            textbox.Text = s;
+            if (textbox.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(changeText);
+                form.Invoke(d, new object[] { s });
+
+            }
+            else
+            {
+                textbox.Text = s;
+            }
         }
     }
 }

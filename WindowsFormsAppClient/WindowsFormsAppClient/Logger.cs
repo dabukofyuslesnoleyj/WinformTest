@@ -84,14 +84,26 @@ namespace WindowsFormsAppClient
     public class IPAddressTextChanger : ITextChanger
     {
         TextBox textbox;
+        Form form;
 
-        public IPAddressTextChanger (TextBox tb)
+        public IPAddressTextChanger (Form f, TextBox tb)
         {
+            form = f;
             textbox = tb;
         }
+        delegate void SetTextCallback(string text);
         public void changeText(string s)
         {
-            textbox.Text = s;
+            if (textbox.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(changeText);
+                form.Invoke(d, new object[] { s });
+
+            }
+            else
+            {
+                textbox.Text = s;
+            }
         }
     }
 }

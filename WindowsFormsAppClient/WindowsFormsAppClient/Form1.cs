@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Json.Net;
@@ -64,14 +65,16 @@ namespace WindowsFormsAppClient
                 varTypeTextBox.Text, newValTextBox.Text };
             string jsonInput = AsynchronousClient.JsonMessageBuilder(input);
             Logger.GetInstance().WriteLog(jsonInput);
-            AsynchronousClient.StartClient(jsonInput, new IPAddressTextChanger(IPTextBox));
+            new Thread(delegate () {
+                AsynchronousClient.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
+            }).Start();
         }
         private void button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string data = File.ReadAllText(openFileDialog1.FileName);
-                AsynchronousClient.StartClient(data, new IPAddressTextChanger(IPTextBox));
+                AsynchronousClient.StartClient(data, new IPAddressTextChanger(this, IPTextBox));
             }
         }
     }

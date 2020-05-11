@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CsvHelper;
@@ -21,14 +22,16 @@ namespace WindowsFormsAppSerialPort
         {
             InitializeComponent();
             receiver = new Receiver();
-            textBoxListener = new TextBoxLoggerListener(logTextBox);
+            textBoxListener = new TextBoxLoggerListener(this, logTextBox);
             Logger.GetInstance().Attach(textBoxListener);
             Logger.GetInstance().NotifyAll("logger initialized...");
         }
 
         private void startServerBtn_Click(object sender, EventArgs e)
         {
-            receiver.StartReceiving(ipText: new IPTextChanger(IPTextBix));
+            new Thread(delegate () {
+                receiver.StartReceiving(ipText: new IPTextChanger(this, IPTextBix));
+            }).Start();
         }
 
         private void loadDataBtn_Click(object sender, EventArgs e)
