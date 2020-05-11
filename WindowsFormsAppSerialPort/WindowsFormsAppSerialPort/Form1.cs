@@ -28,7 +28,7 @@ namespace WindowsFormsAppSerialPort
 
         private void startServerBtn_Click(object sender, EventArgs e)
         {
-            receiver.StartReceiving();
+            receiver.StartReceiving(ipText: new IPTextChanger(IPTextBix));
         }
 
         private void loadDataBtn_Click(object sender, EventArgs e)

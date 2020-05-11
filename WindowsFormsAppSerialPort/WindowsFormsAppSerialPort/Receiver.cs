@@ -21,7 +21,7 @@ namespace WindowsFormsAppSerialPort
     }
     interface IReceiver
     {
-        void StartReceiving();
+        void StartReceiving(ITextChanger ipText);
         void NotifyAll();
         void Attach(IReceiverListener receiverListener);
     }
@@ -42,7 +42,7 @@ namespace WindowsFormsAppSerialPort
             receiverListeners = new List<IReceiverListener>();
         }
 
-        public void StartReceiving()
+        public void StartReceiving(ITextChanger ipText)
         {
             // Establish the local endpoint for the socket.  
             // The DNS name of the computer  
@@ -50,6 +50,8 @@ namespace WindowsFormsAppSerialPort
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+
+            ipText.changeText(ipAddress.MapToIPv4().ToString());
 
             // Create a TCP/IP socket.  
             Socket listener = new Socket(ipAddress.AddressFamily,

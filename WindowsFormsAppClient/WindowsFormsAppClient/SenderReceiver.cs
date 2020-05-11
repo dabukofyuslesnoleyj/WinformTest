@@ -50,7 +50,7 @@ namespace WindowsFormsAppClient
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
-                ipTextChanger.changeText(ipAddress.ToString());
+                ipTextChanger.changeText(ipAddress.MapToIPv4().ToString());
 
                 // Create a TCP/IP socket.  
                 Socket client = new Socket(ipAddress.AddressFamily,
