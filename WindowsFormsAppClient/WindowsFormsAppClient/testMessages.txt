@@ -1,0 +1,24 @@
+{
+commandID : "s0001",
+commandType : "SET",
+messageTarget : "name",
+messageType : "int",
+messageValue : "1",
+} | 
+{
+commandID : "g0001",
+commandType : "GET",
+messageTarget : "name"
+} | 
+{
+commandID : "p0001",
+commandType : "PING",
+} | 
+{
+commandID : "p0002",
+commandType : "PING",
+} | 
+{
+commandID : "p0003",
+commandType : "PING",
+} | 
