@@ -127,11 +127,12 @@ namespace WindowsFormsAppSerialPort
                 {
                     // All the data has been read from the
                     // client. Display it on the console.  
-                    MessageCollection.GetInstance().AddMessage(UtilityFunctions.MessageParser(content));
+                    MessageCollection.GetInstance().AddListOfMessages(UtilityFunctions.MessageParser(content));
                     Logger.GetInstance().NotifyAll("Received a message");
                     // TODO: Add notif that promts new message
                     // Send response 
-                    Send(handler, MessageCollection.GetInstance().NextMessage().call());
+                    while (!MessageCollection.GetInstance().IsLastMessage())
+                        Send(handler, MessageCollection.GetInstance().NextMessage().call());
                 }
                 else
                 {

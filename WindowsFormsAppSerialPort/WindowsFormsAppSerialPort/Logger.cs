@@ -21,23 +21,34 @@ namespace WindowsFormsAppSerialPort
         //      messageType : "int"
         //      messageValue : "1"
         //  }
-        public static Message MessageParser(string json)
+        public static List<Message> MessageParser(string json)
         {
 
             if (json.Contains("<EOF>"))
             {
                 json = json.Substring(0, json.Length - 5);
             }
-            Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-            switch (message["commandType"])
+            List<Message> messages = new List<Message>();
+            string[] jsonList = json.Split('|');
+            foreach (string s in jsonList)
             {
-                case "GET" :
-                    return new GetMessage(message["commandID"], message["messageTarget"]);
-                case "SET" : return new SetMessage(message["commandID"], message["messageTarget"],
-                    message["messageValue"], message["messageType"]);
-                case "PING": return new PingMessage(message["commandID"]);
-                default : return null;
+                Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                switch (message["commandType"])
+                {
+                    case "GET":
+                        messages.Add(new GetMessage(message["commandID"], message["messageTarget"]));
+                        break;
+                    case "SET":
+                        messages.Add(new SetMessage(message["commandID"], message["messageTarget"],
+               message["messageValue"], message["messageType"]));
+                        break;
+                    case "PING": messages.Add(new PingMessage(message["commandID"]));
+                        break;
+                    default: break;
+                }
             }
+            return messages;
+            
         }
     }
 

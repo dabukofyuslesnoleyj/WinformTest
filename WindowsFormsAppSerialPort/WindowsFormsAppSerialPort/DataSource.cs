@@ -5,9 +5,9 @@ namespace WindowsFormsAppSerialPort
 {
     class CSVRawData
     {
-        public string name;
-        public string dataType;
-        public string value;
+        public string name { get; set; }
+        public string dataType { get; set; }
+        public string value { get; set; }
     }
     
     interface DataType
@@ -32,6 +32,25 @@ namespace WindowsFormsAppSerialPort
         public void SetDataValue(string input)
         {
             value = Int32.Parse(input);
+        }
+    }
+
+    class FloatDataType : DataType
+    {
+        public float value { get; set; }
+
+        public FloatDataType(float input)
+        {
+            value = input;
+        }
+
+        public string GetAsString()
+        {
+            return value + "";
+        }
+        public void SetDataValue(string input)
+        {
+            value = float.Parse(input);
         }
     }
 

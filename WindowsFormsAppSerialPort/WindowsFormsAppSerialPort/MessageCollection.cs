@@ -6,6 +6,7 @@ namespace WindowsFormsAppSerialPort
     interface MessageEnumerator
     {
         void AddMessage(Message message);
+        void AddListOfMessages(List<Message> m);
         Message NextMessage();
         Message CurrentMessage();
         bool IsLastMessage();
@@ -31,6 +32,14 @@ namespace WindowsFormsAppSerialPort
         public void AddMessage(Message message)
         {
             this.messages.Add(message);
+        }
+
+        public void AddListOfMessages(List<Message> m)
+        {
+            foreach (Message message in m)
+            {
+                messages.Add(message);
+            }
         }
 
         public Message NextMessage()
