@@ -73,6 +73,22 @@ namespace WindowsFormsAppSerialPort
         }
     }
 
+    class EmptyDataType : DataType
+    {
+
+        public EmptyDataType()
+        {
+        }
+
+        public string GetAsString()
+        {
+            return "EMPTY";
+        }
+        public void SetDataValue(string input)
+        {
+        }
+    }
+
     class DataSource
     {
         private static DataSource instance;

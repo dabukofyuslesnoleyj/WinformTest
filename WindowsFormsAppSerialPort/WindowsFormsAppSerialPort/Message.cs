@@ -71,7 +71,11 @@ namespace WindowsFormsAppSerialPort
                 case "flt":
                     newValue = new FloatDataType(float.Parse(setValue));
                     break;
-                default : newValue = new StringDataType(setValue);
+                case "str":
+                    newValue = new StringDataType(setValue);
+                    break;
+                default:
+                    newValue = new EmptyDataType();
                     break;
             }
         }
