@@ -83,7 +83,7 @@ namespace WindowsFormsAppSerialPort
         public override string call()
         {
             DataSource.GetInstance().SetData(targetName, newValue);
-            return "OK";
+            return "SET command to change value of "+targetName+" to "+newValue+" performed";
         }
     }
 }

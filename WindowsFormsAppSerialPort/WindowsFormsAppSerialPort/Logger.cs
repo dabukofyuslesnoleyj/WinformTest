@@ -44,7 +44,7 @@ namespace WindowsFormsAppSerialPort
                         break;
                     case "PING": messages.Add(new PingMessage(message["commandID"]));
                         break;
-                    default: 
+                    default: messages.Add(new ErrorMessage(""));
                         break;
                 }
             }
