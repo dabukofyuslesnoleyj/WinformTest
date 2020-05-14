@@ -23,7 +23,6 @@ namespace WindowsFormsAppSerialPort
         //  }
         public static List<Message> MessageParser(string json)
         {
-
             if (json.Contains("<EOF>"))
             {
                 json = json.Substring(0, json.Length - 5);
@@ -40,7 +39,7 @@ namespace WindowsFormsAppSerialPort
                         break;
                     case "SET":
                         messages.Add(new SetMessage(message["commandID"], message["messageTarget"],
-               message["messageValue"], message["messageType"]));
+                            message["messageValue"], message["messageType"]));
                         break;
                     case "PING": messages.Add(new PingMessage(message["commandID"]));
                         break;
@@ -49,7 +48,6 @@ namespace WindowsFormsAppSerialPort
                 }
             }
             return messages;
-            
         }
     }
 
@@ -92,9 +90,7 @@ namespace WindowsFormsAppSerialPort
         public void NotifyAll(string s)
         {
             foreach (ILoggerListener listener in listeners)
-            {
                 listener.update(s);
-            }
         }
 
         public void Attach(ILoggerListener listener)

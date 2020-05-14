@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -117,7 +116,6 @@ namespace WindowsFormsAppClient
             {
                 SetTextCallback d = new SetTextCallback(changeText);
                 form.Invoke(d, new object[] { s });
-
             }
             else
             {

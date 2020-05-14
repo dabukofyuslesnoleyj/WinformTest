@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Json.Net;
-using Newtonsoft.Json;
 
 namespace WindowsFormsAppClient
 {
@@ -77,6 +68,11 @@ namespace WindowsFormsAppClient
                 string data = File.ReadAllText(openFileDialog1.FileName);
                 AsynchronousClient.StartClient(data, new IPAddressTextChanger(this, IPTextBox));
             }
+        }
+
+        private void changeIpBtn_Click(object sender, EventArgs e)
+        {
+            Logger.GetInstance().WriteLog("Messeges will now be sent to IP Address : "+IPTextBox.Text);
         }
     }
 }

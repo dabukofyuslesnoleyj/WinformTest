@@ -47,10 +47,13 @@
             this.sendBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.changeIpBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -61,7 +64,7 @@
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -98,7 +101,6 @@
             this.IPTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IPTextBox.Location = new System.Drawing.Point(3, 23);
             this.IPTextBox.Name = "IPTextBox";
-            this.IPTextBox.ReadOnly = true;
             this.IPTextBox.Size = new System.Drawing.Size(391, 26);
             this.IPTextBox.TabIndex = 2;
             // 
@@ -131,6 +133,7 @@
             this.flowLayoutPanel2.Controls.Add(this.varTypeTextBox);
             this.flowLayoutPanel2.Controls.Add(this.newValLabel);
             this.flowLayoutPanel2.Controls.Add(this.newValTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.sendBtn);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(403, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -218,7 +221,7 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.sendBtn);
+            this.flowLayoutPanel3.Controls.Add(this.button1);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(403, 385);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -227,7 +230,7 @@
             // 
             // sendBtn
             // 
-            this.sendBtn.Location = new System.Drawing.Point(3, 3);
+            this.sendBtn.Location = new System.Drawing.Point(3, 262);
             this.sendBtn.Name = "sendBtn";
             this.sendBtn.Size = new System.Drawing.Size(382, 29);
             this.sendBtn.TabIndex = 0;
@@ -237,9 +240,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 385);
+            this.button1.Location = new System.Drawing.Point(3, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(394, 32);
+            this.button1.Size = new System.Drawing.Size(382, 32);
             this.button1.TabIndex = 3;
             this.button1.Text = "send multiple commands with a file";
             this.button1.UseVisualStyleBackColor = true;
@@ -248,6 +251,25 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.changeIpBtn);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 385);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(394, 62);
+            this.flowLayoutPanel4.TabIndex = 3;
+            // 
+            // changeIpBtn
+            // 
+            this.changeIpBtn.Location = new System.Drawing.Point(3, 3);
+            this.changeIpBtn.Name = "changeIpBtn";
+            this.changeIpBtn.Size = new System.Drawing.Size(375, 32);
+            this.changeIpBtn.TabIndex = 0;
+            this.changeIpBtn.Text = "change IP address";
+            this.changeIpBtn.UseVisualStyleBackColor = true;
+            this.changeIpBtn.Click += new System.EventHandler(this.changeIpBtn_Click);
             // 
             // Form1
             // 
@@ -263,6 +285,7 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,6 +311,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox IPTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Button changeIpBtn;
     }
 }
 
