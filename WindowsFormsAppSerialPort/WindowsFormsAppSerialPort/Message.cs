@@ -10,7 +10,7 @@ namespace WindowsFormsAppSerialPort
         }
         public string commandID { get; set; }
 
-        public abstract string call();
+        public abstract string Call();
     }
 
     class PingMessage : Message
@@ -20,7 +20,7 @@ namespace WindowsFormsAppSerialPort
 
         }
         
-        public override string call()
+        public override string Call()
         {
             return "PONG";
         }
@@ -33,7 +33,7 @@ namespace WindowsFormsAppSerialPort
 
         }
 
-        public override string call()
+        public override string Call()
         {
             return "INVALID COMMAND SENT";
         }
@@ -47,7 +47,7 @@ namespace WindowsFormsAppSerialPort
             this.targetName = targetName;
         }
 
-        public override string call()
+        public override string Call()
         {
             string output = DataSource.GetInstance().GetData(targetName).GetAsString();
             if (output == null)
@@ -80,7 +80,7 @@ namespace WindowsFormsAppSerialPort
             }
         }
 
-        public override string call()
+        public override string Call()
         {
             DataSource.GetInstance().SetData(targetName, newValue);
             return "SET command to change value of "+targetName+" to "+newValue+" performed";

@@ -11,7 +11,7 @@ namespace WindowsFormsAppClient
     }
     interface ILoggerListener
     {
-        void update(string s);
+        void Update(string s);
     }
 
     class Logger : ILogger
@@ -40,7 +40,7 @@ namespace WindowsFormsAppClient
             
             foreach (ILoggerListener loggerListener in loggerListeners)
             {
-                              loggerListener.update(s);
+                              loggerListener.Update(s);
             }
         }
 
@@ -59,7 +59,7 @@ namespace WindowsFormsAppClient
             filename = fn;
         }
 
-        public void update(string s)
+        public void Update(string s)
         {
             using (StreamWriter writer = new StreamWriter(filename))
             {
@@ -79,13 +79,12 @@ namespace WindowsFormsAppClient
             textBox = tb;
         }
         delegate void SetTextCallback(string text);
-        public void update(string s)
+        public void Update(string s)
         {
             if (textBox.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(update);
+                SetTextCallback d = new SetTextCallback(Update);
                 mainForm.Invoke(d, new object[] { s });
-
             }
             else
             {
@@ -96,7 +95,7 @@ namespace WindowsFormsAppClient
 
     public interface ITextChanger
     {
-        void changeText(string s);
+        void ChangeText(string s);
     }
 
     public class IPAddressTextChanger : ITextChanger
@@ -110,11 +109,11 @@ namespace WindowsFormsAppClient
             textbox = tb;
         }
         delegate void SetTextCallback(string text);
-        public void changeText(string s)
+        public void ChangeText(string s)
         {
             if (textbox.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(changeText);
+                SetTextCallback d = new SetTextCallback(ChangeText);
                 form.Invoke(d, new object[] { s });
             }
             else

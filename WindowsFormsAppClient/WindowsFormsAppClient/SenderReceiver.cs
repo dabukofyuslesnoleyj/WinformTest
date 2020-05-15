@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace WindowsFormsAppClient
 {
-
     // State object for receiving data from remote device.  
     public class StateObject
     {
@@ -50,7 +49,7 @@ namespace WindowsFormsAppClient
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
-                ipTextChanger.changeText(ipAddress.MapToIPv4().ToString());
+                ipTextChanger.ChangeText(ipAddress.MapToIPv4().ToString());
 
                 // Create a TCP/IP socket.  
                 Socket client = new Socket(ipAddress.AddressFamily,
@@ -74,7 +73,6 @@ namespace WindowsFormsAppClient
                 // Release the socket.  
                 client.Shutdown(SocketShutdown.Both);
                 client.Close();
-
             }
             catch (Exception e)
             {

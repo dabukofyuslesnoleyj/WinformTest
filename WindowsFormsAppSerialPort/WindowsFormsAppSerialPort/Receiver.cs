@@ -132,7 +132,7 @@ namespace WindowsFormsAppSerialPort
                     // TODO: Add notif that promts new message
                     // Send response 
                     while (!MessageCollection.GetInstance().IsLastMessage())
-                        Send(handler, MessageCollection.GetInstance().NextMessage().call());
+                        Send(handler, MessageCollection.GetInstance().NextMessage().Call());
                 }
                 else
                 {

@@ -59,7 +59,7 @@ namespace WindowsFormsAppSerialPort
 
     interface ILoggerListener
     {
-        void update(string s);
+        void Update(string s);
     }
 
     class Logger : ILogger
@@ -90,7 +90,7 @@ namespace WindowsFormsAppSerialPort
         public void NotifyAll(string s)
         {
             foreach (ILoggerListener listener in listeners)
-                listener.update(s);
+                listener.Update(s);
         }
 
         public void Attach(ILoggerListener listener)
@@ -109,7 +109,7 @@ namespace WindowsFormsAppSerialPort
             filename = fn;
         }
 
-        public void update(string s)
+        public void Update(string s)
         {
             using (StreamWriter writer = new StreamWriter(filename))
             {
@@ -129,11 +129,11 @@ namespace WindowsFormsAppSerialPort
             textbox = tb;
         }
         delegate void SetTextCallback(string text);
-        public void update(string s)
+        public void Update(string s)
         {
             if (textbox.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(update);
+                SetTextCallback d = new SetTextCallback(Update);
                 form.Invoke(d, new object[] { s });
 
             }
