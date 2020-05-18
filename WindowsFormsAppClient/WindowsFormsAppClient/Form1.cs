@@ -9,11 +9,13 @@ namespace WindowsFormsAppClient
     {
         string currMessage;
         int idCount;
+        IClient clientReceiver;
         public Form1()
         {
             InitializeComponent();
             Logger.GetInstance().Attach(new LoggerListenerTextBox(this, logTextBox));
             Logger.GetInstance().Attach(new LoggerListenerFileWriter("log.txt"));
+            clientReceiver = new AsynchronousClient();
 
             idCount = 0;
         }
@@ -58,7 +60,7 @@ namespace WindowsFormsAppClient
             string jsonInput = AsynchronousClient.JsonMessageBuilder(input);
             Logger.GetInstance().WriteLog(jsonInput);
             new Thread(delegate () {
-                AsynchronousClient.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
+                clientReceiver.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
             }).Start();
         }
         private void button1_Click(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace WindowsFormsAppClient
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string data = File.ReadAllText(openFileDialog1.FileName);
-                AsynchronousClient.StartClient(data, new IPAddressTextChanger(this, IPTextBox));
+                clientReceiver.StartClient(data, new IPAddressTextChanger(this, IPTextBox));
             }
         }
 

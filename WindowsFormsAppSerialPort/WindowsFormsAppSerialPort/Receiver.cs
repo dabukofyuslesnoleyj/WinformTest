@@ -31,8 +31,17 @@ namespace WindowsFormsAppSerialPort
         void Update();
     }
 
-    class TCPReceiver : IReceiver
+    class TcpReceiver : IReceiver
     {
+        List<IReceiverListener> receiverListeners;
+        string ipv4Address;
+
+        public TcpReceiver(string ipv4)
+        {
+            ipv4Address = ipv4;
+            receiverListeners = new List<IReceiverListener>();
+        }
+
         public void StartReceiving(ITextChanger ipText)
         {
             TcpListener server = null;
@@ -40,7 +49,7 @@ namespace WindowsFormsAppSerialPort
             {
                 // Set the TcpListener on port 13000.
                 Int32 port = 13000;
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                IPAddress localAddr = IPAddress.Parse(ipv4Address);
 
                 // TcpListener server = new TcpListener(port);
                 server = new TcpListener(localAddr, port);
@@ -55,12 +64,12 @@ namespace WindowsFormsAppSerialPort
                 // Enter the listening loop.
                 while (true)
                 {
-                    Console.Write("Waiting for a connection... ");
+                    Logger.GetInstance().NotifyAll("Waiting for a connection... ");
 
                     // Perform a blocking call to accept requests.
                     // You could also use server.AcceptSocket() here.
                     TcpClient client = server.AcceptTcpClient();
-                    Console.WriteLine("Connected!");
+                    Logger.GetInstance().NotifyAll("Connected!");
 
                     data = null;
 
@@ -74,17 +83,19 @@ namespace WindowsFormsAppSerialPort
                     {
                         // Translate data bytes to a ASCII string.
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
-                        Console.WriteLine("Received: {0}", data);
+                        Logger.GetInstance().NotifyAll("Received: " + data);
 
                         // Process the data sent by the client.
-                        data = data.ToUpper();
+                        //data = data.ToUpper();
 
                         byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
 
                         // Send back a response.
                         stream.Write(msg, 0, msg.Length);
-                        Console.WriteLine("Sent: {0}", data);
+                        Logger.GetInstance().NotifyAll("Sent: " + data);
                     }
+
+                    MessageCollection.GetInstance().AddListOfMessages(UtilityFunctions.MessageParser(data));
 
                     // Shutdown and end connection
                     client.Close();
@@ -92,12 +103,13 @@ namespace WindowsFormsAppSerialPort
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                Logger.GetInstance().NotifyAll("SocketException: " + e);
             }
             finally
             {
                 // Stop listening for new clients.
                 server.Stop();
+                Logger.GetInstance().NotifyAll("Serverhas stopped listening");
             }
         }
         public void NotifyAll()
