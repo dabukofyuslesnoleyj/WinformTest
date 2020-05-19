@@ -44,11 +44,11 @@
             this.newValLabel = new System.Windows.Forms.Label();
             this.newValTextBox = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.sendBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.sendButton = new System.Windows.Forms.Button();
+            this.sendMultiButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.changeIpBtn = new System.Windows.Forms.Button();
+            this.changeIpButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -133,7 +133,7 @@
             this.flowLayoutPanel2.Controls.Add(this.varTypeTextBox);
             this.flowLayoutPanel2.Controls.Add(this.newValLabel);
             this.flowLayoutPanel2.Controls.Add(this.newValTextBox);
-            this.flowLayoutPanel2.Controls.Add(this.sendBtn);
+            this.flowLayoutPanel2.Controls.Add(this.sendButton);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(403, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -221,7 +221,7 @@
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.Controls.Add(this.button1);
+            this.flowLayoutPanel3.Controls.Add(this.sendMultiButton);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(403, 385);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -230,23 +230,23 @@
             // 
             // sendBtn
             // 
-            this.sendBtn.Location = new System.Drawing.Point(3, 262);
-            this.sendBtn.Name = "sendBtn";
-            this.sendBtn.Size = new System.Drawing.Size(382, 29);
-            this.sendBtn.TabIndex = 0;
-            this.sendBtn.Text = "send";
-            this.sendBtn.UseVisualStyleBackColor = true;
-            this.sendBtn.Click += new System.EventHandler(this.sendBtn_Click);
+            this.sendButton.Location = new System.Drawing.Point(3, 262);
+            this.sendButton.Name = "sendBtn";
+            this.sendButton.Size = new System.Drawing.Size(382, 29);
+            this.sendButton.TabIndex = 0;
+            this.sendButton.Text = "send";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendBtn_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(382, 32);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "send multiple commands with a file";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.sendMultiButton.Location = new System.Drawing.Point(3, 3);
+            this.sendMultiButton.Name = "button1";
+            this.sendMultiButton.Size = new System.Drawing.Size(382, 32);
+            this.sendMultiButton.TabIndex = 3;
+            this.sendMultiButton.Text = "send multiple commands with a file";
+            this.sendMultiButton.UseVisualStyleBackColor = true;
+            this.sendMultiButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // openFileDialog1
             // 
@@ -254,7 +254,7 @@
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.changeIpBtn);
+            this.flowLayoutPanel4.Controls.Add(this.changeIpButton);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 385);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
@@ -263,13 +263,13 @@
             // 
             // changeIpBtn
             // 
-            this.changeIpBtn.Location = new System.Drawing.Point(3, 3);
-            this.changeIpBtn.Name = "changeIpBtn";
-            this.changeIpBtn.Size = new System.Drawing.Size(375, 32);
-            this.changeIpBtn.TabIndex = 0;
-            this.changeIpBtn.Text = "change IP address";
-            this.changeIpBtn.UseVisualStyleBackColor = true;
-            this.changeIpBtn.Click += new System.EventHandler(this.changeIpBtn_Click);
+            this.changeIpButton.Location = new System.Drawing.Point(3, 3);
+            this.changeIpButton.Name = "changeIpBtn";
+            this.changeIpButton.Size = new System.Drawing.Size(375, 32);
+            this.changeIpButton.TabIndex = 0;
+            this.changeIpButton.Text = "change IP address";
+            this.changeIpButton.UseVisualStyleBackColor = true;
+            this.changeIpButton.Click += new System.EventHandler(this.changeIpBtn_Click);
             // 
             // Form1
             // 
@@ -305,14 +305,14 @@
         private System.Windows.Forms.Label newValLabel;
         private System.Windows.Forms.TextBox newValTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.Button sendBtn;
+        private System.Windows.Forms.Button sendButton;
         private System.Windows.Forms.ComboBox commondComboBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button sendMultiButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox IPTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Button changeIpBtn;
+        private System.Windows.Forms.Button changeIpButton;
     }
 }
 

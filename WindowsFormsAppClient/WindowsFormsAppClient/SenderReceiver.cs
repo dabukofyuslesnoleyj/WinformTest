@@ -56,7 +56,7 @@ namespace WindowsFormsAppClient
                 // Send the message to the connected TcpServer.
                 stream.Write(data, 0, data.Length);
 
-                Console.WriteLine("Sent: {0}", messageToSend);
+                Logger.GetInstance().WriteLog("Sent: " + messageToSend);
 
                 // Receive the TcpServer.response.
 
@@ -69,7 +69,7 @@ namespace WindowsFormsAppClient
                 // Read the first batch of the TcpServer response bytes.
                 Int32 bytes = stream.Read(data, 0, data.Length);
                 responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-                Console.WriteLine("Received: {0}", responseData);
+                Logger.GetInstance().WriteLog("Received: " + responseData);
 
                 // Close everything.
                 stream.Close();
@@ -77,13 +77,14 @@ namespace WindowsFormsAppClient
             }
             catch (ArgumentNullException e)
             {
-                Console.WriteLine("ArgumentNullException: {0}", e);
+                Logger.GetInstance().WriteLog("ArgumentNullException: " + e);
             }
             catch (SocketException e)
             {
-                Console.WriteLine("SocketException: {0}", e);
+                Logger.GetInstance().WriteLog("SocketException: " + e);
             }
         }
+    }
 
     public class AsynchronousClient : IClient
     {
@@ -106,9 +107,7 @@ namespace WindowsFormsAppClient
             // Connect to a remote device.  
             try
             {
-                // Establish the remote endpoint for the socket.  
-                // The name of the
-                // remote device is "host.contoso.com".  
+                // Establish the remote endpoint for the socket.   
                 IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);

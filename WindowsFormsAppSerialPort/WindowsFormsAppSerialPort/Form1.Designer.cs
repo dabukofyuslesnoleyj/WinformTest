@@ -31,19 +31,19 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.logTextBox = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.IPTextBix = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.clsoeBtn = new System.Windows.Forms.Button();
-            this.loadDataBtn = new System.Windows.Forms.Button();
-            this.startServerBtn = new System.Windows.Forms.Button();
+            this.clsoeButton = new System.Windows.Forms.Button();
+            this.loadDataButton = new System.Windows.Forms.Button();
+            this.startServerButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.IPTextBix = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,6 +88,34 @@
             this.logTextBox.Size = new System.Drawing.Size(548, 295);
             this.logTextBox.TabIndex = 2;
             // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.label1);
+            this.flowLayoutPanel2.Controls.Add(this.IPTextBix);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(548, 69);
+            this.flowLayoutPanel2.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "IP Address";
+            // 
+            // IPTextBix
+            // 
+            this.IPTextBix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IPTextBix.Location = new System.Drawing.Point(3, 27);
+            this.IPTextBix.Name = "IPTextBix";
+            this.IPTextBix.Size = new System.Drawing.Size(545, 26);
+            this.IPTextBix.TabIndex = 0;
+            // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(563, 3);
@@ -99,9 +127,9 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.clsoeBtn);
-            this.flowLayoutPanel1.Controls.Add(this.loadDataBtn);
-            this.flowLayoutPanel1.Controls.Add(this.startServerBtn);
+            this.flowLayoutPanel1.Controls.Add(this.clsoeButton);
+            this.flowLayoutPanel1.Controls.Add(this.loadDataButton);
+            this.flowLayoutPanel1.Controls.Add(this.startServerButton);
             this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 385);
@@ -109,35 +137,35 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(554, 62);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // clsoeBtn
+            // clsoeButton
             // 
-            this.clsoeBtn.Location = new System.Drawing.Point(3, 3);
-            this.clsoeBtn.Name = "clsoeBtn";
-            this.clsoeBtn.Size = new System.Drawing.Size(75, 23);
-            this.clsoeBtn.TabIndex = 0;
-            this.clsoeBtn.Text = "close";
-            this.clsoeBtn.UseVisualStyleBackColor = true;
-            this.clsoeBtn.Click += new System.EventHandler(this.clsoeBtn_Click);
+            this.clsoeButton.Location = new System.Drawing.Point(3, 3);
+            this.clsoeButton.Name = "clsoeButton";
+            this.clsoeButton.Size = new System.Drawing.Size(75, 23);
+            this.clsoeButton.TabIndex = 0;
+            this.clsoeButton.Text = "close";
+            this.clsoeButton.UseVisualStyleBackColor = true;
+            this.clsoeButton.Click += new System.EventHandler(this.clsoeBtn_Click);
             // 
-            // loadDataBtn
+            // loadDataButton
             // 
-            this.loadDataBtn.Location = new System.Drawing.Point(84, 3);
-            this.loadDataBtn.Name = "loadDataBtn";
-            this.loadDataBtn.Size = new System.Drawing.Size(75, 23);
-            this.loadDataBtn.TabIndex = 1;
-            this.loadDataBtn.Text = "load data";
-            this.loadDataBtn.UseVisualStyleBackColor = true;
-            this.loadDataBtn.Click += new System.EventHandler(this.loadDataBtn_Click);
+            this.loadDataButton.Location = new System.Drawing.Point(84, 3);
+            this.loadDataButton.Name = "loadDataButton";
+            this.loadDataButton.Size = new System.Drawing.Size(75, 23);
+            this.loadDataButton.TabIndex = 1;
+            this.loadDataButton.Text = "load data";
+            this.loadDataButton.UseVisualStyleBackColor = true;
+            this.loadDataButton.Click += new System.EventHandler(this.loadDataBtn_Click);
             // 
-            // startServerBtn
+            // startServerButton
             // 
-            this.startServerBtn.Location = new System.Drawing.Point(165, 3);
-            this.startServerBtn.Name = "startServerBtn";
-            this.startServerBtn.Size = new System.Drawing.Size(75, 23);
-            this.startServerBtn.TabIndex = 2;
-            this.startServerBtn.Text = "start server";
-            this.startServerBtn.UseVisualStyleBackColor = true;
-            this.startServerBtn.Click += new System.EventHandler(this.startServerBtn_Click);
+            this.startServerButton.Location = new System.Drawing.Point(165, 3);
+            this.startServerButton.Name = "startServerButton";
+            this.startServerButton.Size = new System.Drawing.Size(75, 23);
+            this.startServerButton.TabIndex = 2;
+            this.startServerButton.Text = "start server";
+            this.startServerButton.UseVisualStyleBackColor = true;
+            this.startServerButton.Click += new System.EventHandler(this.startServerBtn_Click);
             // 
             // button4
             // 
@@ -147,34 +175,6 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.IPTextBix);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(548, 69);
-            this.flowLayoutPanel2.TabIndex = 3;
-            // 
-            // IPTextBix
-            // 
-            this.IPTextBix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IPTextBix.Location = new System.Drawing.Point(3, 27);
-            this.IPTextBix.Name = "IPTextBix";
-            this.IPTextBix.Size = new System.Drawing.Size(545, 26);
-            this.IPTextBix.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "IP Address";
             // 
             // Form1
             // 
@@ -188,9 +188,9 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -201,9 +201,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button clsoeBtn;
-        private System.Windows.Forms.Button loadDataBtn;
-        private System.Windows.Forms.Button startServerBtn;
+        private System.Windows.Forms.Button clsoeButton;
+        private System.Windows.Forms.Button loadDataButton;
+        private System.Windows.Forms.Button startServerButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

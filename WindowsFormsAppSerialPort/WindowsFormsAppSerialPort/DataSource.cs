@@ -106,6 +106,14 @@ namespace WindowsFormsAppSerialPort
             return instance;
         }
 
+        public List<DataType> GetAllData()
+        {
+            List<DataType> dataList = new List<DataType>();
+            foreach (string key in data.Keys)
+                dataList.Add(data[key]);
+            return dataList;
+        }
+
         public DataType GetData(string key)
         {
             if (data.ContainsKey(key))

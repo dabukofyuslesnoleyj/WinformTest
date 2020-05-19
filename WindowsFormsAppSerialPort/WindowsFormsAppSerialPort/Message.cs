@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace WindowsFormsAppSerialPort
 {
@@ -53,6 +54,23 @@ namespace WindowsFormsAppSerialPort
             if (output == null)
                 return this.targetName+" does not exist in the data source";
             return output;
+        }
+    }
+
+    class GetAllMessage : Message
+    {
+        public GetAllMessage(string commandID) : base(commandID)
+        { 
+        }
+        public override string Call()
+        {
+            List<string> output = new List<string>();
+            foreach (DataType datum in DataSource.GetInstance().GetAllData())
+                output.Add(datum.GetAsString());
+
+            if (output.Count < 1)
+                return "The data source is empty";
+            return String.Join(",",output.ToArray());
         }
     }
 
