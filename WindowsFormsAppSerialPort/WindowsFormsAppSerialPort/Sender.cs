@@ -33,11 +33,11 @@ namespace WindowsFormsAppSerialPort
         {
             Dictionary<string, string> inputData = JsonConvert.DeserializeObject<Dictionary<string, string>>(input);
             Dictionary<string, string> outputData = new Dictionary<string, string>();
-            outputData.Add("commandID", inputData["MessageId"]);
+            outputData.Add("commandID", inputData["Id"]);
 
-            string[] inputMessage = inputData["Message"].Split();
-            outputData.Add("commandType", inputMessage[0]);
-            switch (inputMessage[0])
+            string[] inputMessage = inputData["Message"].Split(',');
+            outputData.Add("commandType", inputData["Command"]);
+            switch (inputData["Command"])
             {
                 case "SET":
                     outputData.Add("messageTarget", inputMessage[1]);
@@ -45,7 +45,7 @@ namespace WindowsFormsAppSerialPort
                     outputData.Add("messageValue", inputMessage[2]);
                     break;
                 case "GET":
-                    outputData.Add("messageTarget", inputMessage[1]);
+                    outputData.Add("messageTarget", inputMessage[0]);
                     break;
             }
 

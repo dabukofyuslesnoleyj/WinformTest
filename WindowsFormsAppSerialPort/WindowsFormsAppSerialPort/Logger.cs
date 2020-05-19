@@ -32,6 +32,11 @@ namespace WindowsFormsAppSerialPort
             foreach (string s in jsonList)
             {
                 Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                if (message.ContainsKey("Id"))
+                {
+                    string translatedJson = new MaynardMessageAdapter().translateMessage(json);
+                    message = JsonConvert.DeserializeObject<Dictionary<string, string>>(translatedJson);
+                }
                 switch (message["commandType"])
                 {
                     case "GET":

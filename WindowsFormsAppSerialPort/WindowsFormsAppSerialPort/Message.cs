@@ -23,7 +23,7 @@ namespace WindowsFormsAppSerialPort
         
         public override string Call()
         {
-            return "PONG";
+            return "@json{Id : " + commandID + ", Type : PING, Message : PONG";
         }
     }
 
@@ -36,7 +36,7 @@ namespace WindowsFormsAppSerialPort
 
         public override string Call()
         {
-            return "INVALID COMMAND SENT";
+            return "@json{Id : N/A, Type : ERROR, Message : INVALID COMMAND SENT";
         }
     }
 
@@ -52,8 +52,9 @@ namespace WindowsFormsAppSerialPort
         {
             string output = DataSource.GetInstance().GetData(targetName).GetAsString();
             if (output == null)
-                return this.targetName+" does not exist in the data source";
-            return output;
+                return "@json{Id : " + commandID + ", Type : ERROR, Message : GET command failed " + 
+                    this.targetName + " does not exist in the data source";
+            return "@json{Id : " + commandID + ", Type : GET, Message : " + output;
         }
     }
 
@@ -69,8 +70,8 @@ namespace WindowsFormsAppSerialPort
                 output.Add(datum.GetAsString());
 
             if (output.Count < 1)
-                return "The data source is empty";
-            return String.Join(",",output.ToArray());
+                return "@json{Id : " + commandID + ", Type : GETALL, Message : GETALL command failed, The data source is empty";
+            return "@json{Id : " + commandID + ", Type : GETALL, Message : \"" + String.Join(",",output.ToArray() + "\"");
         }
     }
 
@@ -101,7 +102,7 @@ namespace WindowsFormsAppSerialPort
         public override string Call()
         {
             DataSource.GetInstance().SetData(targetName, newValue);
-            return "SET command to change value of "+targetName+" to "+newValue+" performed";
+            return "@json{Id : " + commandID + ", Type : SET, Message :\"" + targetName+", "+newValue+"\"";
         }
     }
 }
