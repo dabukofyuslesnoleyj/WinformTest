@@ -99,8 +99,15 @@ namespace WindowsFormsAppClient
         private static ManualResetEvent receiveDone =
             new ManualResetEvent(false);
 
+        string server;
+
         // The response from the remote device.  
         private static String response = String.Empty;
+
+        public AsynchronousClient(string serverIP)
+        {
+            server = serverIP;
+        }
 
         public void StartClient(string messageToSend, ITextChanger ipTextChanger)
         {
@@ -109,7 +116,7 @@ namespace WindowsFormsAppClient
             {
                 // Establish the remote endpoint for the socket.   
                 IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-                IPAddress ipAddress = ipHostInfo.AddressList[0];
+                IPAddress ipAddress = IPAddress.Parse(server);
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
                 ipTextChanger.ChangeText(ipAddress.MapToIPv4().ToString());
