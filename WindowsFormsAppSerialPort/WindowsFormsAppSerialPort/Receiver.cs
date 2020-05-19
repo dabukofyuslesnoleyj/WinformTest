@@ -83,18 +83,17 @@ namespace WindowsFormsAppSerialPort
                         // Translate data bytes to a ASCII string.
                         data = System.Text.Encoding.ASCII.GetString(bytes, 0, i);
                         Logger.GetInstance().NotifyAll("Received: " + data);
-
+                        List<Message> newMessage = UtilityFunctions.MessageParser(data);
+                        MessageCollection.GetInstance().AddListOfMessages(newMessage);
                         // Process the data sent by the client.
                         //data = data.ToUpper();
 
-                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(data);
+                        byte[] msg = System.Text.Encoding.ASCII.GetBytes(newMessage[0].Call());
 
                         // Send back a response.
                         stream.Write(msg, 0, msg.Length);
                         Logger.GetInstance().NotifyAll("Sent: " + data);
                     }
-
-                    MessageCollection.GetInstance().AddListOfMessages(UtilityFunctions.MessageParser(data));
 
                     // Shutdown and end connection
                     client.Close();
@@ -139,7 +138,7 @@ namespace WindowsFormsAppSerialPort
             // running the listener is "host.contoso.com".  
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 13000);
 
             ipText.changeText(ipAddress.MapToIPv4().ToString());
 

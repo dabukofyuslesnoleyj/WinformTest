@@ -15,7 +15,7 @@ namespace WindowsFormsAppClient
             InitializeComponent();
             Logger.GetInstance().Attach(new LoggerListenerTextBox(this, logTextBox));
             Logger.GetInstance().Attach(new LoggerListenerFileWriter("log.txt"));
-            clientReceiver = new AsynchronousClient("127.0.0.1");
+            clientReceiver = new TcpAsynchromousClient("127.0.0.1");
 
             idCount = 0;
         }
@@ -75,7 +75,7 @@ namespace WindowsFormsAppClient
         private void changeIpBtn_Click(object sender, EventArgs e)
         {
             Logger.GetInstance().WriteLog("Messeges will now be sent to IP Address : "+IPTextBox.Text);
-            clientReceiver = new AsynchronousClient(IPTextBox.Text);
+            clientReceiver = new TcpAsynchromousClient(IPTextBox.Text);
         }
     }
 }

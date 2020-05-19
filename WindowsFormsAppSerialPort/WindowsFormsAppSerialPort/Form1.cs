@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CsvHelper;
 
@@ -21,7 +14,7 @@ namespace WindowsFormsAppSerialPort
         public Form1()
         {
             InitializeComponent();
-            receiver = new Receiver();
+            receiver = new TcpReceiver("192.168.0.126");
             textBoxListener = new TextBoxLoggerListener(this, logTextBox);
             Logger.GetInstance().Attach(textBoxListener);
             Logger.GetInstance().Attach(new FileWriterLoggerListener("logs.txt"));

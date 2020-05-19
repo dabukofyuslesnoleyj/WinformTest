@@ -63,7 +63,7 @@ namespace WindowsFormsAppSerialPort
 
         public bool IsLastMessage()
         {
-            return currCount >= messages.Count;
+            return currCount > messages.Count;
         }
     }
 }

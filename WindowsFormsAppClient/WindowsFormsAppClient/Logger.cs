@@ -142,23 +142,18 @@ namespace WindowsFormsAppClient
         {
             Dictionary<string, string> data = new Dictionary<string, string>();
             string jsonData = "";
+
+            data.Add("commandID", "C-" + message[0]);
+            data.Add("commandType", message[1]);
             switch (message[1])
             {
                 case "GET":
-                    data.Add("commandID", message[0]);
-                    data.Add("commandType", message[1]);
                     data.Add("messageTarget", message[2]);
                     break;
                 case "SET":
-                    data.Add("commandID", message[0]);
-                    data.Add("commandType", message[1]);
                     data.Add("messageTarget", message[2]);
                     data.Add("messageType", message[3]);
                     data.Add("messageValue", message[4]);
-                    break;
-                case "PING":
-                    data.Add("commandID", message[0]);
-                    data.Add("commandType", message[1]);
                     break;
                 default:
                     break;
