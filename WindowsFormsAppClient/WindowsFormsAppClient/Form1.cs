@@ -57,7 +57,7 @@ namespace WindowsFormsAppClient
         {
             string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
                 varTypeTextBox.Text, newValTextBox.Text };
-            string jsonInput = AsynchronousClient.JsonMessageBuilder(input);
+            string jsonInput = UtilityFunctions.JsonMessageBuilder(input);
             Logger.GetInstance().WriteLog(jsonInput);
             new Thread(delegate () {
                 clientReceiver.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));

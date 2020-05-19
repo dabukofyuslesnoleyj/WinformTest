@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace WindowsFormsAppClient
 {
@@ -120,6 +121,50 @@ namespace WindowsFormsAppClient
             {
                 textbox.Text = s;
             }
+        }
+    }
+
+    class UtilityFunctions
+    {
+        public static string ResponseParser(string response)
+        {
+            Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
+            string output = "response to our command " + data["Id"] + " \nwhich is a " + data["Type"] +
+                " the response is: \n" + data["Message"];
+            return output;
+        }
+        //      commandID : "s0001"
+        //      commandType : "SET"
+        //      messageTarget : "name"
+        //      messageType : "int"
+        //      messageValue : "1"
+        public static string JsonMessageBuilder(string[] message)
+        {
+            Dictionary<string, string> data = new Dictionary<string, string>();
+            string jsonData = "";
+            switch (message[1])
+            {
+                case "GET":
+                    data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
+                    data.Add("messageTarget", message[2]);
+                    break;
+                case "SET":
+                    data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
+                    data.Add("messageTarget", message[2]);
+                    data.Add("messageType", message[3]);
+                    data.Add("messageValue", message[4]);
+                    break;
+                case "PING":
+                    data.Add("commandID", message[0]);
+                    data.Add("commandType", message[1]);
+                    break;
+                default:
+                    break;
+            }
+            jsonData = JsonConvert.SerializeObject(data);
+            return jsonData;
         }
     }
 }
