@@ -67,9 +67,21 @@ namespace WindowsFormsAppClient
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                Logger.GetInstance().WriteLog("Sending commands from "+openFileDialog1.FileName);
                 string data = File.ReadAllText(openFileDialog1.FileName);
-                clientReceiver.StartClient(data, new IPAddressTextChanger(this, IPTextBox));
+
+                new Thread(delegate () {
+                    startMultiSend(data);
+                }).Start();
+
+                Logger.GetInstance().WriteLog("Sending commands finished");
             }
+        }
+
+        private void startMultiSend(string data)
+        {
+            foreach (string jsonInput in data.Split('|'))
+                clientReceiver.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
         }
 
         private void changeIpBtn_Click(object sender, EventArgs e)
