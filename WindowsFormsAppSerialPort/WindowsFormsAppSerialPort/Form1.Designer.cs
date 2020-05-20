@@ -39,7 +39,7 @@
             this.clsoeButton = new System.Windows.Forms.Button();
             this.loadDataButton = new System.Windows.Forms.Button();
             this.startServerButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -130,7 +130,6 @@
             this.flowLayoutPanel1.Controls.Add(this.clsoeButton);
             this.flowLayoutPanel1.Controls.Add(this.loadDataButton);
             this.flowLayoutPanel1.Controls.Add(this.startServerButton);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 385);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -167,14 +166,9 @@
             this.startServerButton.UseVisualStyleBackColor = true;
             this.startServerButton.Click += new System.EventHandler(this.startServerBtn_Click);
             // 
-            // button4
+            // openFileDialog1
             // 
-            this.button4.Location = new System.Drawing.Point(246, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -204,11 +198,11 @@
         private System.Windows.Forms.Button clsoeButton;
         private System.Windows.Forms.Button loadDataButton;
         private System.Windows.Forms.Button startServerButton;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox logTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox IPTextBix;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

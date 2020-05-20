@@ -34,7 +34,7 @@ namespace WindowsFormsAppSerialPort
                 Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
                 try
                 {
-                    if (message.ContainsKey("MessageID"))
+                    if (message.ContainsKey("Id"))
                     {
                         string translatedJson = new MaynardMessageAdapter().translateMessage(json);
                         message = JsonConvert.DeserializeObject<Dictionary<string, string>>(translatedJson);

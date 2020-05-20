@@ -51,6 +51,8 @@ namespace WindowsFormsAppSerialPort
                 Int32 port = 13000;
                 IPAddress localAddr = IPAddress.Parse(ipv4Address);
 
+                ipText.changeText(localAddr.MapToIPv4().ToString());
+
                 server = new TcpListener(localAddr, port);
 
                 // Start listening for client requests.

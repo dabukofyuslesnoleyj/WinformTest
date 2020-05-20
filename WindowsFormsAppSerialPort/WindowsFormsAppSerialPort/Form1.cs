@@ -30,28 +30,33 @@ namespace WindowsFormsAppSerialPort
 
         private void loadDataBtn_Click(object sender, EventArgs e)
         {
-            var reader = new StreamReader("data.csv");
-            var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-
-            var records = csv.GetRecords<CSVRawData>();
-
-            Logger.GetInstance().NotifyAll("Loading Data source.....");
-
-            foreach (CSVRawData record in records)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                DataType value;
-                Logger.GetInstance().NotifyAll("Loading variable named " + record.name);
-                switch (record.name)
-                {
-                    case "int" : value = new IntegerDataType(Int32.Parse(record.value));
-                        break;
-                    default : value = new StringDataType(record.value);
-                        break;
-                }
+                var reader = new StreamReader(openFileDialog1.FileName);
+                var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
-                DataSource.GetInstance().SetData(record.name, value);
+                var records = csv.GetRecords<CSVRawData>();
+
+                Logger.GetInstance().NotifyAll("Loading Data source.....");
+
+                foreach (CSVRawData record in records)
+                {
+                    DataType value;
+                    Logger.GetInstance().NotifyAll("Loading variable named " + record.name);
+                    switch (record.name)
+                    {
+                        case "int":
+                            value = new IntegerDataType(Int32.Parse(record.value));
+                            break;
+                        default:
+                            value = new StringDataType(record.value);
+                            break;
+                    }
+
+                    DataSource.GetInstance().SetData(record.name, value);
+                }
+                Logger.GetInstance().NotifyAll("Finished loading data");
             }
-            Logger.GetInstance().NotifyAll("Finished loading data");
         }
 
         private void clsoeBtn_Click(object sender, EventArgs e)
