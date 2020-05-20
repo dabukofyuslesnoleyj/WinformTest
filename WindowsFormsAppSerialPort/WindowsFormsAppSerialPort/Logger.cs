@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -31,24 +32,33 @@ namespace WindowsFormsAppSerialPort
             foreach (string s in jsonList)
             {
                 Dictionary<string, string> message = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-                if (message.ContainsKey("Id"))
+                try
                 {
-                    string translatedJson = new MaynardMessageAdapter().translateMessage(json);
-                    message = JsonConvert.DeserializeObject<Dictionary<string, string>>(translatedJson);
+                    if (message.ContainsKey("MessageID"))
+                    {
+                        string translatedJson = new MaynardMessageAdapter().translateMessage(json);
+                        message = JsonConvert.DeserializeObject<Dictionary<string, string>>(translatedJson);
+                    }
+                    switch (message["commandType"])
+                    {
+                        case "GET":
+                            messages.Add(new GetMessage(message["commandID"], message["messageTarget"]));
+                            break;
+                        case "SET":
+                            messages.Add(new SetMessage(message["commandID"], message["messageTarget"],
+                                message["messageValue"], message["messageType"]));
+                            break;
+                        case "PING":
+                            messages.Add(new PingMessage(message["commandID"]));
+                            break;
+                        default:
+                            messages.Add(new ErrorMessage(""));
+                            break;
+                    }
                 }
-                switch (message["commandType"])
+                catch (Exception e)
                 {
-                    case "GET":
-                        messages.Add(new GetMessage(message["commandID"], message["messageTarget"]));
-                        break;
-                    case "SET":
-                        messages.Add(new SetMessage(message["commandID"], message["messageTarget"],
-                            message["messageValue"], message["messageType"]));
-                        break;
-                    case "PING": messages.Add(new PingMessage(message["commandID"]));
-                        break;
-                    default: messages.Add(new ErrorMessage(""));
-                        break;
+                    Logger.GetInstance().NotifyAll(e+"");
                 }
             }
             return messages;

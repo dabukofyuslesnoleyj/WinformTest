@@ -86,7 +86,7 @@ namespace WindowsFormsAppClient
 
         private void changeIpBtn_Click(object sender, EventArgs e)
         {
-            Logger.GetInstance().WriteLog("Messeges will now be sent to IP Address : "+IPTextBox.Text);
+            Logger.GetInstance().WriteLog("Messages will now be sent to IP Address : "+IPTextBox.Text);
             clientReceiver = new TcpAsynchromousClient(IPTextBox.Text);
         }
     }

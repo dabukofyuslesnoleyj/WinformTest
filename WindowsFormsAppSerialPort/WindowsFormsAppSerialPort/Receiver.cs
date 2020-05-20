@@ -107,7 +107,7 @@ namespace WindowsFormsAppSerialPort
             {
                 // Stop listening for new clients.
                 server.Stop();
-                Logger.GetInstance().NotifyAll("Serverhas stopped listening");
+                Logger.GetInstance().NotifyAll("Server has stopped listening");
             }
         }
         public void NotifyAll()

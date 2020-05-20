@@ -1,14 +1,14 @@
 {
 commandID : "s0001",
 commandType : "SET",
-messageTarget : "name",
+messageTarget : "val",
 messageType : "int",
 messageValue : "1",
 } | 
 {
 commandID : "g0001",
 commandType : "GET",
-messageTarget : "name"
+messageTarget : "val"
 } | 
 {
 commandID : "p0001",
