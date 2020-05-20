@@ -40,15 +40,15 @@
             this.varNameLabel = new System.Windows.Forms.Label();
             this.varNameTextBox = new System.Windows.Forms.TextBox();
             this.varTypeLabel = new System.Windows.Forms.Label();
-            this.varTypeTextBox = new System.Windows.Forms.TextBox();
             this.newValLabel = new System.Windows.Forms.Label();
             this.newValTextBox = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.sendButton = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.sendMultiButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.changeIpButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.varTypeComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
@@ -130,7 +130,7 @@
             this.flowLayoutPanel2.Controls.Add(this.varNameLabel);
             this.flowLayoutPanel2.Controls.Add(this.varNameTextBox);
             this.flowLayoutPanel2.Controls.Add(this.varTypeLabel);
-            this.flowLayoutPanel2.Controls.Add(this.varTypeTextBox);
+            this.flowLayoutPanel2.Controls.Add(this.varTypeComboBox);
             this.flowLayoutPanel2.Controls.Add(this.newValLabel);
             this.flowLayoutPanel2.Controls.Add(this.newValTextBox);
             this.flowLayoutPanel2.Controls.Add(this.sendButton);
@@ -193,19 +193,11 @@
             this.varTypeLabel.TabIndex = 3;
             this.varTypeLabel.Text = "variable type";
             // 
-            // varTypeTextBox
-            // 
-            this.varTypeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.varTypeTextBox.Location = new System.Drawing.Point(3, 163);
-            this.varTypeTextBox.Name = "varTypeTextBox";
-            this.varTypeTextBox.Size = new System.Drawing.Size(382, 29);
-            this.varTypeTextBox.TabIndex = 2;
-            // 
             // newValLabel
             // 
             this.newValLabel.AutoSize = true;
             this.newValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newValLabel.Location = new System.Drawing.Point(3, 195);
+            this.newValLabel.Location = new System.Drawing.Point(3, 187);
             this.newValLabel.Name = "newValLabel";
             this.newValLabel.Size = new System.Drawing.Size(121, 29);
             this.newValLabel.TabIndex = 1;
@@ -214,10 +206,20 @@
             // newValTextBox
             // 
             this.newValTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newValTextBox.Location = new System.Drawing.Point(3, 227);
+            this.newValTextBox.Location = new System.Drawing.Point(3, 219);
             this.newValTextBox.Name = "newValTextBox";
             this.newValTextBox.Size = new System.Drawing.Size(382, 29);
             this.newValTextBox.TabIndex = 0;
+            // 
+            // sendButton
+            // 
+            this.sendButton.Location = new System.Drawing.Point(3, 254);
+            this.sendButton.Name = "sendButton";
+            this.sendButton.Size = new System.Drawing.Size(382, 29);
+            this.sendButton.TabIndex = 0;
+            this.sendButton.Text = "send";
+            this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendBtn_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -228,29 +230,15 @@
             this.flowLayoutPanel3.Size = new System.Drawing.Size(394, 62);
             this.flowLayoutPanel3.TabIndex = 2;
             // 
-            // sendBtn
-            // 
-            this.sendButton.Location = new System.Drawing.Point(3, 262);
-            this.sendButton.Name = "sendBtn";
-            this.sendButton.Size = new System.Drawing.Size(382, 29);
-            this.sendButton.TabIndex = 0;
-            this.sendButton.Text = "send";
-            this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendBtn_Click);
-            // 
-            // button1
+            // sendMultiButton
             // 
             this.sendMultiButton.Location = new System.Drawing.Point(3, 3);
-            this.sendMultiButton.Name = "button1";
+            this.sendMultiButton.Name = "sendMultiButton";
             this.sendMultiButton.Size = new System.Drawing.Size(382, 32);
             this.sendMultiButton.TabIndex = 3;
             this.sendMultiButton.Text = "send multiple commands with a file";
             this.sendMultiButton.UseVisualStyleBackColor = true;
             this.sendMultiButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // flowLayoutPanel4
             // 
@@ -261,15 +249,33 @@
             this.flowLayoutPanel4.Size = new System.Drawing.Size(394, 62);
             this.flowLayoutPanel4.TabIndex = 3;
             // 
-            // changeIpBtn
+            // changeIpButton
             // 
             this.changeIpButton.Location = new System.Drawing.Point(3, 3);
-            this.changeIpButton.Name = "changeIpBtn";
+            this.changeIpButton.Name = "changeIpButton";
             this.changeIpButton.Size = new System.Drawing.Size(375, 32);
             this.changeIpButton.TabIndex = 0;
             this.changeIpButton.Text = "change IP address";
             this.changeIpButton.UseVisualStyleBackColor = true;
             this.changeIpButton.Click += new System.EventHandler(this.changeIpBtn_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // varTypeComboBox
+            // 
+            this.varTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.varTypeComboBox.FormattingEnabled = true;
+            this.varTypeComboBox.Items.AddRange(new object[] {
+            "string",
+            "integer",
+            "float"});
+            this.varTypeComboBox.Location = new System.Drawing.Point(3, 163);
+            this.varTypeComboBox.Name = "varTypeComboBox";
+            this.varTypeComboBox.Size = new System.Drawing.Size(384, 32);
+            this.varTypeComboBox.TabIndex = 9;
+            this.varTypeComboBox.Text = "-- select the variable type --";
             // 
             // Form1
             // 
@@ -301,7 +307,6 @@
         private System.Windows.Forms.Label varNameLabel;
         private System.Windows.Forms.TextBox varNameTextBox;
         private System.Windows.Forms.Label varTypeLabel;
-        private System.Windows.Forms.TextBox varTypeTextBox;
         private System.Windows.Forms.Label newValLabel;
         private System.Windows.Forms.TextBox newValTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
@@ -313,6 +318,7 @@
         private System.Windows.Forms.TextBox IPTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button changeIpButton;
+        private System.Windows.Forms.ComboBox varTypeComboBox;
     }
 }
 

@@ -26,7 +26,7 @@ namespace WindowsFormsAppClient
             {
                 case 0 :
                     varNameTextBox.Visible = true;
-                    varTypeTextBox.Visible = false;
+                    varTypeComboBox.Visible = false;
                     newValTextBox.Visible = false;
                     varNameLabel.Visible = true;
                     varTypeLabel.Visible = false;
@@ -35,7 +35,7 @@ namespace WindowsFormsAppClient
                     break;
                 case 1 :        
                     varNameTextBox.Visible = true;
-                    varTypeTextBox.Visible = true;
+                    varTypeComboBox.Visible = true;
                     newValTextBox.Visible = true;
                     varNameLabel.Visible = true;
                     varTypeLabel.Visible = true;
@@ -44,7 +44,7 @@ namespace WindowsFormsAppClient
                     break;
                 case 2 :
                     varNameTextBox.Visible = false;
-                    varTypeTextBox.Visible = false;
+                    varTypeComboBox.Visible = false;
                     newValTextBox.Visible = false;
                     varNameLabel.Visible = false;
                     varTypeLabel.Visible = false;
@@ -55,8 +55,18 @@ namespace WindowsFormsAppClient
         }
         private void sendBtn_Click(object sender, EventArgs e)
         {
+            string varType;
+            switch (varTypeComboBox.SelectedIndex)
+            {
+                case 1: varType = "int";
+                    break;
+                case 2: varType = "flt";
+                    break;
+                default:  varType = "str";
+                    break;
+            }
             string[] input = {currMessage + idCount, currMessage, varNameTextBox.Text,
-                varTypeTextBox.Text, newValTextBox.Text };
+                varType, newValTextBox.Text };
             string jsonInput = UtilityFunctions.JsonMessageBuilder(input);
             Logger.GetInstance().WriteLog(jsonInput);
             new Thread(delegate () {
