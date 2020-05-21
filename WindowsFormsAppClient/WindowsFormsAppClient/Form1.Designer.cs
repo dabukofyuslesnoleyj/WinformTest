@@ -219,7 +219,7 @@
             this.sendButton.TabIndex = 0;
             this.sendButton.Text = "send";
             this.sendButton.UseVisualStyleBackColor = true;
-            this.sendButton.Click += new System.EventHandler(this.sendBtn_Click);
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // flowLayoutPanel3
             // 
@@ -238,7 +238,7 @@
             this.sendMultiButton.TabIndex = 3;
             this.sendMultiButton.Text = "send multiple commands with a file";
             this.sendMultiButton.UseVisualStyleBackColor = true;
-            this.sendMultiButton.Click += new System.EventHandler(this.button1_Click);
+            this.sendMultiButton.Click += new System.EventHandler(this.sendMultipleButton_Click);
             // 
             // flowLayoutPanel4
             // 
@@ -257,7 +257,7 @@
             this.changeIpButton.TabIndex = 0;
             this.changeIpButton.Text = "change IP address";
             this.changeIpButton.UseVisualStyleBackColor = true;
-            this.changeIpButton.Click += new System.EventHandler(this.changeIpBtn_Click);
+            this.changeIpButton.Click += new System.EventHandler(this.changeIpButton_Click);
             // 
             // openFileDialog1
             // 

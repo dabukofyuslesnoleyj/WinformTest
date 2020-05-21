@@ -53,7 +53,7 @@ namespace WindowsFormsAppClient
                     break;
             }
         }
-        private void sendBtn_Click(object sender, EventArgs e)
+        private void sendButton_Click(object sender, EventArgs e)
         {
             string varType;
             switch (varTypeComboBox.SelectedIndex)
@@ -73,7 +73,7 @@ namespace WindowsFormsAppClient
                 clientReceiver.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
             }).Start();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void sendMultipleButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -94,7 +94,7 @@ namespace WindowsFormsAppClient
                 clientReceiver.StartClient(jsonInput, new IPAddressTextChanger(this, IPTextBox));
         }
 
-        private void changeIpBtn_Click(object sender, EventArgs e)
+        private void changeIpButton_Click(object sender, EventArgs e)
         {
             Logger.GetInstance().WriteLog("Messages will now be sent to IP Address : "+IPTextBox.Text);
             clientReceiver = new TcpAsynchromousClient(IPTextBox.Text);
