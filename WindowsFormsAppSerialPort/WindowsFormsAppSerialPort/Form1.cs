@@ -21,14 +21,14 @@ namespace WindowsFormsAppSerialPort
             Logger.GetInstance().NotifyAll("logger initialized...");
         }
 
-        private void startServerBtn_Click(object sender, EventArgs e)
+        private void startServerButton_Click(object sender, EventArgs e)
         {
             new Thread(delegate () {
                 receiver.StartReceiving(ipText: new IPTextChanger(this, IPTextBix));
             }).Start();
         }
 
-        private void loadDataBtn_Click(object sender, EventArgs e)
+        private void loadDataButton_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -59,7 +59,7 @@ namespace WindowsFormsAppSerialPort
             }
         }
 
-        private void clsoeBtn_Click(object sender, EventArgs e)
+        private void clsoeButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

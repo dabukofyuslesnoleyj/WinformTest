@@ -28,7 +28,7 @@ namespace WindowsFormsAppClient
 
     public class TcpAsynchromousClient : IClient
     {
-        string server;
+        private string server;
 
         public TcpAsynchromousClient(string serverIP)
         {
@@ -99,7 +99,7 @@ namespace WindowsFormsAppClient
         private static ManualResetEvent receiveDone =
             new ManualResetEvent(false);
 
-        string server;
+        private string server;
 
         // The response from the remote device.  
         private static String response = String.Empty;

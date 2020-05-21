@@ -33,8 +33,8 @@ namespace WindowsFormsAppSerialPort
 
     class TcpReceiver : IReceiver
     {
-        List<IReceiverListener> receiverListeners;
-        string ipv4Address;
+        private List<IReceiverListener> receiverListeners;
+        private string ipv4Address;
 
         public TcpReceiver(string ipv4)
         {
@@ -49,11 +49,11 @@ namespace WindowsFormsAppSerialPort
             {
                 // Set the TcpListener on port 13000.
                 Int32 port = 13000;
-                IPAddress localAddr = IPAddress.Parse(ipv4Address);
+                IPAddress localAddress = IPAddress.Parse(ipv4Address);
 
-                ipText.changeText(localAddr.MapToIPv4().ToString());
+                ipText.ChangeText(localAddress.MapToIPv4().ToString());
 
-                server = new TcpListener(localAddr, port);
+                server = new TcpListener(localAddress, port);
 
                 // Start listening for client requests.
                 server.Start();
@@ -114,19 +114,20 @@ namespace WindowsFormsAppSerialPort
         }
         public void NotifyAll()
         {
-
+            foreach (IReceiverListener listener in receiverListeners)
+                listener.Update();
         }
         public void Attach(IReceiverListener receiverListener)
         {
-
+            receiverListeners.Add(receiverListener);
         }
     }
 
     class Receiver : IReceiver
     {
-        List<IReceiverListener> receiverListeners;
+        private List<IReceiverListener> receiverListeners;
         // Thread signal.  
-        public static ManualResetEvent allDone = new ManualResetEvent(false);
+        public static ManualResetEvent AllDone = new ManualResetEvent(false);
 
         public Receiver()
         {
@@ -142,7 +143,7 @@ namespace WindowsFormsAppSerialPort
             IPAddress ipAddress = ipHostInfo.AddressList[0];
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 13000);
 
-            ipText.changeText(ipAddress.MapToIPv4().ToString());
+            ipText.ChangeText(ipAddress.MapToIPv4().ToString());
 
             // Create a TCP/IP socket.  
             Socket listener = new Socket(ipAddress.AddressFamily,
@@ -157,7 +158,7 @@ namespace WindowsFormsAppSerialPort
                 while (true)
                 {
                     // Set the event to nonsignaled state.  
-                    allDone.Reset();
+                    AllDone.Reset();
 
                     // Start an asynchronous socket to listen for connections.  
                     Logger.GetInstance().NotifyAll("Waiting for a connection...");
@@ -166,7 +167,7 @@ namespace WindowsFormsAppSerialPort
                         listener);
 
                     // Wait until a connection is made before continuing.  
-                    allDone.WaitOne();
+                    AllDone.WaitOne();
                 }
 
             }
@@ -174,13 +175,12 @@ namespace WindowsFormsAppSerialPort
             {
                 Console.WriteLine(e.ToString());
             }
-
         }
 
         public static void AcceptCallback(IAsyncResult ar)
         {
             // Signal the main thread to continue.  
-            allDone.Set();
+            AllDone.Set();
 
             // Get the socket that handles the client request.  
             Socket listener = (Socket)ar.AsyncState;
@@ -223,7 +223,7 @@ namespace WindowsFormsAppSerialPort
                     // TODO: Add notif that promts new message
                     // Send response 
                     while (!MessageCollection.GetInstance().IsLastMessage())
-                        Send(handler, MessageCollection.GetInstance().NextMessage().Call());
+                        send(handler, MessageCollection.GetInstance().NextMessage().Call());
                 }
                 else
                 {
@@ -234,7 +234,7 @@ namespace WindowsFormsAppSerialPort
             }
         }
 
-        private static void Send(Socket handler, String data)
+        private static void send(Socket handler, String data)
         {
             // Convert the string data to byte data using ASCII encoding.  
             byte[] byteData = Encoding.ASCII.GetBytes(data);
@@ -243,10 +243,10 @@ namespace WindowsFormsAppSerialPort
 
             // Begin sending the data to the remote device.  
             handler.BeginSend(byteData, 0, byteData.Length, 0,
-                new AsyncCallback(SendCallback), handler);
+                new AsyncCallback(sendCallback), handler);
         }
 
-        private static void SendCallback(IAsyncResult ar)
+        private static void sendCallback(IAsyncResult ar)
         {
             try
             {

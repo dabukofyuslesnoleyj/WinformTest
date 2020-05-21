@@ -18,7 +18,6 @@ namespace WindowsFormsAppSerialPort
     {
         public PingMessage(string commandID) : base(commandID)
         {
-
         }
         
         public override string Call()
@@ -31,7 +30,6 @@ namespace WindowsFormsAppSerialPort
     {
         public ErrorMessage(string commandID) : base(commandID)
         {
-
         }
 
         public override string Call()

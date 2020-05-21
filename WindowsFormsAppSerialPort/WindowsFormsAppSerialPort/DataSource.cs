@@ -18,64 +18,63 @@ namespace WindowsFormsAppSerialPort
 
     class IntegerDataType : DataType
     {
-        public int value { get; set; }
+        public int Value { get; set; }
 
         public IntegerDataType(int input)
         {
-            value = input;
+            Value = input;
         }
 
         public string GetAsString()
         { 
-            return value + "";
+            return Value + "";
         }
         public void SetDataValue(string input)
         {
-            value = Int32.Parse(input);
+            Value = Int32.Parse(input);
         }
     }
 
     class FloatDataType : DataType
     {
-        public float value { get; set; }
+        public float Value { get; set; }
 
         public FloatDataType(float input)
         {
-            value = input;
+            Value = input;
         }
 
         public string GetAsString()
         {
-            return value + "";
+            return Value + "";
         }
         public void SetDataValue(string input)
         {
-            value = float.Parse(input);
+            Value = float.Parse(input);
         }
     }
 
     class StringDataType : DataType
     {
-        public string value { get; set; }
+        public string Value { get; set; }
 
         public StringDataType (string input)
         {
-            value = input;
+            Value = input;
         }
 
         public string GetAsString()
         {
-            return value;
+            return Value;
         }
         public void SetDataValue(string input)
         {
-            value = input;
+            Value = input;
         }
     }
 
     class EmptyDataType : DataType
     {
-
         public EmptyDataType()
         {
         }

@@ -18,8 +18,8 @@ namespace WindowsFormsAppClient
     class Logger : ILogger
     {
         private static ILogger instance;
-        List<ILoggerListener> loggerListeners;
-        List<string> logs;
+        private List<ILoggerListener> loggerListeners;
+        private List<string> logs;
 
         private Logger()
         {
@@ -40,9 +40,7 @@ namespace WindowsFormsAppClient
             logs.Add(s);
             
             foreach (ILoggerListener loggerListener in loggerListeners)
-            {
-                              loggerListener.Update(s);
-            }
+                loggerListener.Update(s);
         }
 
         public void Attach(ILoggerListener loggerListener)
@@ -53,11 +51,11 @@ namespace WindowsFormsAppClient
 
     class LoggerListenerFileWriter : ILoggerListener
     {
-        string filename;
+        private string filename;
 
-        public LoggerListenerFileWriter(string fn)
+        public LoggerListenerFileWriter(string filename_)
         {
-            filename = fn;
+            filename = filename_;
         }
 
         public void Update(string s)
@@ -71,13 +69,13 @@ namespace WindowsFormsAppClient
 
     class LoggerListenerTextBox : ILoggerListener
     {
-        TextBox textBox;
-        Form mainForm;
+        private TextBox textBox;
+        private Form mainForm;
 
-        public LoggerListenerTextBox(Form f, TextBox tb)
+        public LoggerListenerTextBox(Form form, TextBox textBox_)
         {
-            mainForm = f;
-            textBox = tb;
+            mainForm = form;
+            textBox = textBox_;
         }
         delegate void SetTextCallback(string text);
         public void Update(string s)
@@ -101,13 +99,13 @@ namespace WindowsFormsAppClient
 
     public class IPAddressTextChanger : ITextChanger
     {
-        TextBox textbox;
-        Form form;
+        private TextBox textbox;
+        private Form form;
 
-        public IPAddressTextChanger (Form f, TextBox tb)
+        public IPAddressTextChanger (Form form_, TextBox textBox_)
         {
-            form = f;
-            textbox = tb;
+            form = form_;
+            textbox = textBox_;
         }
         delegate void SetTextCallback(string text);
         public void ChangeText(string s)

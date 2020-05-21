@@ -144,7 +144,7 @@
             this.clsoeButton.TabIndex = 0;
             this.clsoeButton.Text = "close";
             this.clsoeButton.UseVisualStyleBackColor = true;
-            this.clsoeButton.Click += new System.EventHandler(this.clsoeBtn_Click);
+            this.clsoeButton.Click += new System.EventHandler(this.clsoeButton_Click);
             // 
             // loadDataButton
             // 
@@ -154,7 +154,7 @@
             this.loadDataButton.TabIndex = 1;
             this.loadDataButton.Text = "load data";
             this.loadDataButton.UseVisualStyleBackColor = true;
-            this.loadDataButton.Click += new System.EventHandler(this.loadDataBtn_Click);
+            this.loadDataButton.Click += new System.EventHandler(this.loadDataButton_Click);
             // 
             // startServerButton
             // 
@@ -164,7 +164,7 @@
             this.startServerButton.TabIndex = 2;
             this.startServerButton.Text = "start server";
             this.startServerButton.UseVisualStyleBackColor = true;
-            this.startServerButton.Click += new System.EventHandler(this.startServerBtn_Click);
+            this.startServerButton.Click += new System.EventHandler(this.startServerButton_Click);
             // 
             // openFileDialog1
             // 

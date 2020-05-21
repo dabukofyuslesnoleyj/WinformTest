@@ -36,7 +36,7 @@ namespace WindowsFormsAppSerialPort
                 {
                     if (message.ContainsKey("Id"))
                     {
-                        string translatedJson = new MaynardMessageAdapter().translateMessage(json);
+                        string translatedJson = new MaynardMessageAdapter().TranslateMessage(json);
                         message = JsonConvert.DeserializeObject<Dictionary<string, string>>(translatedJson);
                     }
                     switch (message["commandType"])
@@ -79,8 +79,8 @@ namespace WindowsFormsAppSerialPort
     class Logger : ILogger
     {
         private static ILogger instance;
-        List<ILoggerListener> listeners;
-        List<string> logs;
+        private List<ILoggerListener> listeners;
+        private List<string> logs;
 
         private Logger()
         {
@@ -116,7 +116,7 @@ namespace WindowsFormsAppSerialPort
 
     class FileWriterLoggerListener : ILoggerListener
     {
-        string filename;
+        private string filename;
 
         public FileWriterLoggerListener(string fn)
         {
@@ -134,8 +134,8 @@ namespace WindowsFormsAppSerialPort
 
     class TextBoxLoggerListener : ILoggerListener
     {
-        TextBox textbox;
-        Form form;
+        private TextBox textbox;
+        private Form form;
 
         public TextBoxLoggerListener(Form f, TextBox tb)
         {
@@ -161,13 +161,13 @@ namespace WindowsFormsAppSerialPort
 
     interface ITextChanger
     {
-        void changeText(string s);
+        void ChangeText(string s);
     }
 
     class IPTextChanger : ITextChanger
     {
-        TextBox textbox;
-        Form form;
+        private TextBox textbox;
+        private Form form;
 
         public IPTextChanger(Form f, TextBox tb)
         {
@@ -175,11 +175,11 @@ namespace WindowsFormsAppSerialPort
             textbox = tb;
         }
         delegate void SetTextCallback(string text);
-        public void changeText(string s)
+        public void ChangeText(string s)
         {
             if (textbox.InvokeRequired)
             {
-                SetTextCallback d = new SetTextCallback(changeText);
+                SetTextCallback d = new SetTextCallback(ChangeText);
                 form.Invoke(d, new object[] { s });
 
             }

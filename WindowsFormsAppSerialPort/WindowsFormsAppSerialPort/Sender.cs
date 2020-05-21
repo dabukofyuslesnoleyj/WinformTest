@@ -23,12 +23,12 @@ namespace WindowsFormsAppSerialPort
     //}
     interface IMessageAdapter
     {
-        string translateMessage(string input);
+        string TranslateMessage(string input);
     }
 
     class MaynardMessageAdapter : IMessageAdapter
     {
-        public string translateMessage(string input)
+        public string TranslateMessage(string input)
         {
             Dictionary<string, string> inputData = JsonConvert.DeserializeObject<Dictionary<string, string>>(input);
             Dictionary<string, string> outputData = new Dictionary<string, string>();
