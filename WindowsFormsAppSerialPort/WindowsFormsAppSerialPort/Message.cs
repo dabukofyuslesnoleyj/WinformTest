@@ -23,7 +23,7 @@ namespace WindowsFormsAppSerialPort
         
         public override string Call()
         {
-            return "{Id : " + commandID + ", Type : PING, Message : PONG";
+            return "{Id : " + "C-" + commandID + ", Type : PING, Message : PONG";
         }
     }
 
@@ -36,7 +36,7 @@ namespace WindowsFormsAppSerialPort
 
         public override string Call()
         {
-            return "{Id : N/A, Type : ERROR, Message : INVALID COMMAND SENT";
+            return "{Id : C-N/A, Type : ERROR, Message : INVALID COMMAND SENT";
         }
     }
 
@@ -52,9 +52,9 @@ namespace WindowsFormsAppSerialPort
         {
             string output = DataSource.GetInstance().GetData(targetName).GetAsString();
             if (output == null)
-                return "{Id : " + commandID + ", Type : ERROR, Message : GET command failed " + 
+                return "{Id : " + "C-" + commandID + ", Type : ERROR, Message : GET command failed " + 
                     this.targetName + " does not exist in the data source";
-            return "{Id : " + commandID + ", Type : GET, Message : " + output;
+            return "{Id : " + "C-" + commandID + ", Type : GET, Message : " + output;
         }
     }
 
@@ -70,8 +70,8 @@ namespace WindowsFormsAppSerialPort
                 output.Add(datum.GetAsString());
 
             if (output.Count < 1)
-                return "{Id : " + commandID + ", Type : GETALL, Message : GETALL command failed, The data source is empty";
-            return "{Id : " + commandID + ", Type : GETALL, Message : \"" + String.Join(",",output.ToArray() + "\"");
+                return "{Id : " + "C-" + commandID + ", Type : GETALL, Message : GETALL command failed, The data source is empty";
+            return "{Id : " + "C-" + commandID + ", Type : GETALL, Message : \"" + String.Join(",",output.ToArray() + "\"");
         }
     }
 
@@ -102,7 +102,7 @@ namespace WindowsFormsAppSerialPort
         public override string Call()
         {
             DataSource.GetInstance().SetData(targetName, newValue);
-            return "{Id : " + commandID + ", Type : SET, Message :\"" + targetName+", "+newValue+"\"";
+            return "{Id : " + "C-" + commandID + ", Type : SET, Message :\"" + targetName+", "+newValue+"\"";
         }
     }
 }
