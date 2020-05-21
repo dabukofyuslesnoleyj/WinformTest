@@ -72,8 +72,8 @@ namespace WindowsFormsAppClient
                 Logger.GetInstance().WriteLog("Received: " + responseData);
 
                 // Close everything.
-                stream.Close();
-                client.Close();
+                //stream.Close();
+                //client.Close();
             }
             catch (ArgumentNullException e)
             {

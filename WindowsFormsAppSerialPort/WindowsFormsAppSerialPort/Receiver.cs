@@ -98,7 +98,7 @@ namespace WindowsFormsAppSerialPort
                     }
 
                     // Shutdown and end connection
-                    client.Close();
+                    //client.Close();
                 }
             }
             catch (SocketException e)
